@@ -1,0 +1,18 @@
+.root .menuTitle {
+  background-color: transparent;
+  color: white;
+}
+
+.root .menuTitle span {
+  margin-left: 5px;
+}
+
+.menu .link {
+  background-color: transparent;
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  box-sizing: content-box;
+}

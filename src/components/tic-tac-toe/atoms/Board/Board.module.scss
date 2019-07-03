@@ -1,0 +1,95 @@
+.empty {
+  fill: transparent;
+}
+
+.solutionX {
+  fill: var(--blue-500);
+}
+.solutionO {
+  fill: var(--red-500);
+}
+.solutionNull {
+  fill: var(--orange-500);
+}
+
+.solutionX:hover {
+  fill: var(--blue-700);
+}
+.solutionO:hover {
+  fill: var(--red-700);
+}
+.solutionNull:hover {
+  fill: var(--orange-700);
+}
+
+.X {
+  stroke: var(--blue-500);
+}
+
+.O {
+  stroke: var(--red-500);
+  fill: none;
+}
+
+.elements {
+  stroke-width: 2;
+}
+.grid {
+  stroke-width: 2;
+  stroke: var(--gray-500);
+}
+
+.board:hover .X {
+  stroke: var(--blue-900);
+}
+.board:hover .O {
+  stroke: var(--red-900);
+}
+
+.winnerX {
+  fill: transparent;
+  outline-color: var(--blue-500);
+  outline-style: solid;
+  outline-width: 3;
+}
+.winnerO {
+  fill: transparent;
+  outline-color: var(--red-500);
+  outline-style: solid;
+  outline-width: 3;
+}
+.winnerNull {
+  fill: transparent;
+  outline-color: var(--orange-500);
+  outline-style: solid;
+  outline-width: 3;
+}
+.winner {
+  stroke: none;
+  fill: transparent;
+}
+
+.winnerSelected {
+  fill: transparent;
+  outline-color: green;
+  outline-style: solid;
+  outline-width: 5;
+}
+
+.clickable {
+  fill: var(--gray-300);
+  cursor: pointer;
+}
+
+.clickable:hover {
+  fill: var(--gray-500);
+}
+
+.pointerClickable {
+  cursor: pointer;
+}
+
+.winningLine {
+  stroke: gray;
+  stroke-width: 6;
+}

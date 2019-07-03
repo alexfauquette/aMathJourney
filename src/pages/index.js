@@ -1,20 +1,19 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+import ArticleCard from "src/components/ArticleCard"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <Layout>
+  <Layout location="/">
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <p>Welcome on my website, I'm please to propose you some interactive explanations.</p>
+
+    <ArticleCard
+      articleLocation="/tic-tac-toe/"
+      title="tic-tac-toe AI"
+      description="Can you defeat an AI at tic-tac-toe? That's the challenge of this article. Lets try to beat it before studying how it works."
+    />
   </Layout>
 )
 
