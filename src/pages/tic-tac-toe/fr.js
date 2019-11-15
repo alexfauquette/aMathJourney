@@ -92,15 +92,16 @@ const Page = () => (
         <b>
           <span style={{ color: "blue" }}>X</span> gagne
         </b>{" "}
-        : Le joueur X à un moyen de gagner quelque soit les choix de{" "}
-        <span style={{ color: "red" }}>O</span>.
+        : Le joueur <span style={{ color: "blue" }}>X</span> à un moyen de
+        gagner quelque soit les choix de <span style={{ color: "red" }}>O</span>
+        .
       </li>
       <li>
         <b>
           <span style={{ color: "red" }}>O</span> gagne
         </b>
-        : Le joueur X à un moyen de gagner quelque soit les choix de{" "}
-        <span style={{ color: "blue" }}>X</span>
+        : Le joueur <span style={{ color: "red" }}>O</span> à un moyen de gagner
+        quelque soit les choix de <span style={{ color: "blue" }}>X</span>
       </li>
       <li>
         <b>
@@ -179,7 +180,7 @@ const Page = () => (
       <span style={{ color: "blue" }}>X</span> de jouer. Dans le premier cas, il
       a une action qui l'amène sur une grille gagnante pour lui. Dans le second
       cas, il y a des actions <span style={{ color: "orange" }}>nul</span> et
-      des actiosn gagantes pour <span style={{ color: "red" }}>O</span>, c'est
+      des actions gagantes pour <span style={{ color: "red" }}>O</span>, c'est
       donc une grille <span style={{ color: "orange" }}>nul</span>. Et le
       dernier cas, quoi que fasse <span style={{ color: "blue" }}>X</span>, il
       arrivera sur une grille permettant à{" "}
@@ -191,7 +192,7 @@ const Page = () => (
 
     <p>
       La façon la plus simple de calculer qui va gagner est d'appliquer les
-      règles que l'on vient de présenter. On cré une fonction "getWinner"
+      règles que l'on vient de présenter. On crée une fonction "getWinner"
       ("donne le gagnant" en anglais), qui pour une grille de morpion donnée
       renvoit le gagnant associé. Si c'est un cas final, la fonction revoit le
       gagnant. Si non, on test toutes les actions possibles, on appel
@@ -199,8 +200,8 @@ const Page = () => (
       <span style={{ color: "blue" }}>X</span>,{" "}
       <span style={{ color: "red" }}>O</span> ou{" "}
       <span style={{ color: "orange" }}>nul</span>. Maintnenant que l'on connait
-      le resultat de toute les actions possbles, on peut utiliser la relation de
-      récurence précédente pour savoir qui sera le gagant.
+      le resultat de toute les actions possibles, on peut utiliser la relation
+      de récurence précédente pour savoir qui sera le gagant.
     </p>
 
     <img src={algoPicture} alt="schémat de l'algorithme" />
@@ -226,13 +227,15 @@ const Page = () => (
     <h2>Et le résultat est ...</h2>
     <p>
       Les plus curieux d'entre vous l'auront remarqué, le morpion est un jeu se
-      finissant par un match nul, si les deux joueurs sont parfait. Pour le
-      prouver, le plus simple serait d'afficher tout l'arbre. Ca serait un peu
-      compliqué à lire. On propose donc de prouver que le premier joueur à une
-      stratégie pour obtenir nul quoi que fasse le deuxième joueur. Puis de
-      faire la même chose pour le deuxième joueur. Comme le premier joueur à une
-      stratégie pour faire match nul, les deuxième joueur ne peut pas avoir de
-      stratégie gagnante, et inversement.
+      finissant par un match <span style={{ color: "orange" }}>nul</span>, si
+      les deux joueurs sont parfait. Pour le prouver, le plus simple serait
+      d'afficher tout l'arbre. Ca serait un peu compliqué à lire. On propose
+      donc de prouver que le premier joueur à une stratégie pour obtenir{" "}
+      <span style={{ color: "orange" }}>nul</span>
+      quoi que fasse le deuxième joueur. Puis de faire la même chose pour le
+      deuxième joueur. Comme le premier joueur à une stratégie pour faire match
+      nul, les deuxième joueur ne peut pas avoir de stratégie gagnante, et
+      inversement.
     </p>
     <p>
       Ci-dessous, l'arbre pour le premier joueur. Quand c'est à lui de jouer, on
@@ -247,8 +250,8 @@ const Page = () => (
 
     <p>
       Pourquoi commencer par premier joueur ? Parce que c'est l'arbre le plus
-      petit. Celui du deuxième joueur étant un peu plus gros,
-      il est dans une autre page{" "}
+      petit. Celui du deuxième joueur étant un peu plus gros, il est dans une
+      autre page{" "}
       <Link to={"/tic-tac-toe/second-player-tree/fr"}>(celle-ci)</Link>
     </p>
   </Layout>
