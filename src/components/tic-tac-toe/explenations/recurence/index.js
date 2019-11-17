@@ -1,62 +1,62 @@
-import React from "react";
-import Board from "src/components/tic-tac-toe/atoms/Board";
-import Game from "src/components/tic-tac-toe/explenations/utils/game";
-import Link from "src/components/tic-tac-toe/atoms/LinkVertical";
-import { completTree as tree } from "src/components/tic-tac-toe/explenations/utils";
-const game = new Game();
+import React from "react"
+import Board from "src/components/tic-tac-toe/atoms/Board"
+import Game from "src/components/tic-tac-toe/explenations/utils/game"
+import Link from "src/components/tic-tac-toe/atoms/LinkVertical"
+import { completTree as tree } from "src/components/tic-tac-toe/explenations/utils"
+const game = new Game()
 
 class RecurenceExample extends React.Component {
   constructor(props) {
-    super(props);
-    this.gridsInit = ["...XXO.O.", "OX.X...O.", "X..X..OO."];
+    super(props)
+    this.gridsInit = ["...XXO.O.", "OX.X...O.", "X..X..OO."]
     this.childsInit = this.gridsInit.map(state =>
       game.actions(state).map(action => game.play(state, action))
-    );
+    )
 
     this.state = {
       grids: this.gridsInit,
-      childs: this.childsInit
-    };
+      childs: this.childsInit,
+    }
   }
 
   playerAction(boardIndex, newGrid) {
     if (newGrid) {
       const children = game.isFinished(newGrid)
         ? []
-        : game.actions(newGrid).map(action => game.play(newGrid, action));
+        : game.actions(newGrid).map(action => game.play(newGrid, action))
       return () => () => {
         this.setState({
           grids: [
             ...this.state.grids.slice(0, boardIndex),
             newGrid,
-            ...this.state.grids.slice(boardIndex + 1)
+            ...this.state.grids.slice(boardIndex + 1),
           ],
           childs: [
             ...this.state.childs.slice(0, boardIndex),
             children,
-            ...this.state.childs.slice(boardIndex + 1)
-          ]
-        });
-      };
+            ...this.state.childs.slice(boardIndex + 1),
+          ],
+        })
+      }
     } else {
       return action => () => {
-        const newGrid = game.play(this.state.grids[boardIndex], action);
+        const newGrid = game.play(this.state.grids[boardIndex], action)
         const children = game.isFinished(newGrid)
           ? []
-          : game.actions(newGrid).map(action => game.play(newGrid, action));
+          : game.actions(newGrid).map(action => game.play(newGrid, action))
         this.setState({
           grids: [
             ...this.state.grids.slice(0, boardIndex),
             newGrid,
-            ...this.state.grids.slice(boardIndex + 1)
+            ...this.state.grids.slice(boardIndex + 1),
           ],
           childs: [
             ...this.state.childs.slice(0, boardIndex),
             children,
-            ...this.state.childs.slice(boardIndex + 1)
-          ]
-        });
-      };
+            ...this.state.childs.slice(boardIndex + 1),
+          ],
+        })
+      }
     }
   }
 
@@ -64,20 +64,20 @@ class RecurenceExample extends React.Component {
     return () => {
       this.setState({
         grids: this.gridsInit,
-        childs: this.childsInit
-      });
-    };
+        childs: this.childsInit,
+      })
+    }
   }
 
   render() {
     const maxChildren = Math.max(
       Math.max(this.state.childs[0].length, this.state.childs[1].length),
       this.state.childs[2].length
-    );
-    const totalWidth = 1000;
-    const paritalWidth = totalWidth / 3;
-    const maxWidth = 100;
-    const childWidth = Math.min(maxWidth, paritalWidth / (maxChildren + 3));
+    )
+    const totalWidth = 1000
+    const paritalWidth = totalWidth / 3
+    const maxWidth = 100
+    const childWidth = Math.min(maxWidth, paritalWidth / (maxChildren + 3))
 
     return (
       <>
@@ -86,7 +86,7 @@ class RecurenceExample extends React.Component {
           style={{ height: "300px", width: "100%" }}
         >
           {this.state.grids.map((grid, gridIndex) => (
-            <React.Fragment key={gridIndex+'-'+grid}>
+            <React.Fragment key={gridIndex + "-" + grid}>
               <Board
                 width={maxWidth}
                 height={maxWidth}
@@ -101,9 +101,19 @@ class RecurenceExample extends React.Component {
                 victory={game.getVictory(grid)}
               />
               {this.state.childs[gridIndex].map((childGrid, childIndex) => {
-                const nbChildren = this.state.childs[gridIndex].length;
+                const nbChildren = this.state.childs[gridIndex].length
                 return (
-                  <React.Fragment  key={gridIndex+'-'+grid+'-'+childIndex+'-'+childGrid}>
+                  <React.Fragment
+                    key={
+                      gridIndex +
+                      "-" +
+                      grid +
+                      "-" +
+                      childIndex +
+                      "-" +
+                      childGrid
+                    }
+                  >
                     <Board
                       width={childWidth}
                       height={childWidth}
@@ -134,14 +144,14 @@ class RecurenceExample extends React.Component {
                       y1={200}
                     />
                   </React.Fragment>
-                );
+                )
               })}
             </React.Fragment>
           ))}
         </svg>
         <button onClick={this.reset()}>RESET</button>
       </>
-    );
+    )
   }
 }
-export default RecurenceExample;
+export default RecurenceExample

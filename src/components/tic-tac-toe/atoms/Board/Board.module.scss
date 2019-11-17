@@ -24,15 +24,24 @@
 
 .X {
   stroke: var(--blue-500);
+  &.justAdded {
+    // stroke: var(--blue-900);
+  }
 }
 
 .O {
   stroke: var(--red-500);
   fill: none;
+  &.justAdded {
+    // stroke: var(--red-900);
+  }
 }
 
 .elements {
   stroke-width: 2;
+  .justAdded {
+    stroke-width: 4;
+  }
 }
 .grid {
   stroke-width: 2;

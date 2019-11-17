@@ -1,6 +1,6 @@
-import Game from "./game";
+import Game from "./game"
 
-const game = new Game();
+const game = new Game()
 
 // function getTree(state) {
 //   //return a tree which conatins all possibilities
@@ -84,81 +84,81 @@ function feelSolutions(solution, state, curentPlayer, robot) {
   // feel the object solution with
   // entry: a grid
   // output: the winer, how win after each action, and the number of leaf needed for the computation
-  let winner;
-  let posibilities = [];
-  let player = game.PLAYERS[curentPlayer];
-  let adversary = game.PLAYERS[(1 + curentPlayer) % 2];
+  let winner
+  let posibilities = []
+  let player = game.PLAYERS[curentPlayer]
+  let adversary = game.PLAYERS[(1 + curentPlayer) % 2]
 
   if (solution[state] === undefined) {
     solution[state] = {
       ends: state,
       curentPlayer: curentPlayer,
       winner: "",
-      timeToWin: null
-    };
+      timeToWin: null,
+    }
   }
 
   if (game.getWinner(state) !== game.UNKNOW) {
-    winner = game.getWinner(state).toLowerCase();
-    solution[state].winner = winner;
-    solution[state].timeToWin = 1;
-    solution[state].final = true;
-    return { winner: winner, timeToWin: 1 };
+    winner = game.getWinner(state).toLowerCase()
+    solution[state].winner = winner
+    solution[state].timeToWin = 1
+    solution[state].final = true
+    return { winner: winner, timeToWin: 1 }
   }
 
   for (let action = 0; action < 9; action++) {
     if (solution[state].ends[action] === game.EMPTY) {
       //We don't know the issue of this action
       let newState =
-        state.substring(0, action) + player + state.substring(action + 1);
+        state.substring(0, action) + player + state.substring(action + 1)
 
-      let winner;
-      let timeToWin;
-      let result;
+      let winner
+      let timeToWin
+      let result
       if (
         solution[newState] !== undefined &&
         solution[newState].winner !== ""
       ) {
         //we already now the solution
-        winner = solution[newState].winner;
-        timeToWin = solution[newState].timeToWin;
+        winner = solution[newState].winner
+        timeToWin = solution[newState].timeToWin
       } else {
         result = feelSolutions(
           solution,
           newState,
           (curentPlayer + 1) % 2,
           robot
-        );
-        winner = result.winner;
-        timeToWin = result.timeToWin;
+        )
+        winner = result.winner
+        timeToWin = result.timeToWin
       }
 
       //We know who will win if current player play this action
       solution[state].ends =
         solution[state].ends.substring(0, action) +
         winner +
-        solution[state].ends.substring(action + 1);
+        solution[state].ends.substring(action + 1)
 
-      posibilities.push({ winner, timeToWin });
+      posibilities.push({ winner, timeToWin })
     }
   }
 
-  let minTimeToWin;
+  let minTimeToWin
   if (posibilities.map(x => x.winner).includes(player.toLowerCase())) {
     minTimeToWin = Math.min(
       ...posibilities
         .map(x => (x.winner === player.toLowerCase() ? x.timeToWin : null))
         .filter(x => x !== null)
-    );
-    winner = player.toLowerCase();
+    )
+    winner = player.toLowerCase()
   } else {
     if (posibilities.map(x => x.winner).includes(game.NULL)) {
       minTimeToWin = Math.min(
         ...posibilities
           .map(x => (x.winner === game.NULL ? x.timeToWin : null))
           .filter(x => x !== null)
-      );
-      winner = game.NULL;
+      )
+      winner = game.NULL
     } else {
       if (posibilities.map(x => x.winner).includes(adversary.toLowerCase())) {
         minTimeToWin = Math.min(
@@ -167,24 +167,24 @@ function feelSolutions(solution, state, curentPlayer, robot) {
               x.winner === adversary.toLowerCase() ? x.timeToWin : null
             )
             .filter(x => x !== null)
-        );
-        winner = adversary.toLowerCase();
+        )
+        winner = adversary.toLowerCase()
       }
     }
   }
 
-  solution[state].winner = winner;
+  solution[state].winner = winner
   if (curentPlayer === robot) {
-    solution[state].timeToWin = minTimeToWin;
+    solution[state].timeToWin = minTimeToWin
   } else {
     solution[state].timeToWin = posibilities
       .map(x => x.timeToWin)
-      .reduce((total, x) => total + x);
+      .reduce((total, x) => total + x)
   }
   return {
     winner: solution[state].winner,
-    timeToWin: solution[state].timeToWin
-  };
+    timeToWin: solution[state].timeToWin,
+  }
 }
 
 // function opimalTree(tree, state, curentPlayer, robot, origineX, origineY) {
@@ -241,39 +241,38 @@ function feelSolutions(solution, state, curentPlayer, robot) {
 //   }
 // }
 
-function treeToPosiion(tree) {
-  let height = 0;
-  let currentIndexList = [];
-  let currentActionsList = [];
-  let id = currentActionsList.join("");
-  let currentState = tree[id];
-  let goingBack = false;
+function treeToPosition(tree) {
+  let height = 0
+  let currentIndexList = []
+  let currentActionsList = []
+  let id = currentActionsList.join("")
+  let currentState = tree[id]
+  let goingBack = false
 
-  let output = [];
+  let output = []
   output.push({
     ...currentState,
     x: currentActionsList.length,
     y: height,
-    id: id
-  });
+    id: id,
+  })
 
-  let parent_position = [[0, 0]];
-
+  let parent_position = [[0, 0]]
   if (currentState.childrenActions.length > 0) {
-    currentIndexList.push(0);
-    currentActionsList.push(currentState.childrenActions[0]);
-    currentState = tree[currentActionsList.join("")];
+    currentIndexList.push(0)
+    currentActionsList.push(currentState.childrenActions[0])
+    currentState = tree[currentActionsList.join("")]
   }
 
   while (currentIndexList.length > 0) {
-    currentActionsList = [];
+    currentActionsList = []
     for (let i = 0; i < currentIndexList.length; i++) {
       currentActionsList.push(
         tree[currentActionsList.join("")].childrenActions[currentIndexList[i]]
-      );
+      )
     }
-    let id = currentActionsList.join("");
-    currentState = tree[id];
+    let id = currentActionsList.join("")
+    currentState = tree[id]
 
     if (!goingBack) {
       //en mode forward on affiche les noeuds
@@ -282,29 +281,29 @@ function treeToPosiion(tree) {
         x: currentActionsList.length,
         y: height,
         id: id,
-        parent: parent_position[parent_position.length - 1]
-      });
-      parent_position.push([currentActionsList.length, height]);
+        parent: parent_position[parent_position.length - 1],
+      })
+      parent_position.push([currentActionsList.length, height])
 
       if (currentState.childrenActions.length > 0) {
         //si il y a des fils, on y va
-        currentIndexList.push(0);
+        currentIndexList.push(0)
       } else {
         //si non, on verifie la presence de voisins
-        currentState = tree[currentActionsList.slice(0, -1).join("")];
-        parent_position.pop();
+        currentState = tree[currentActionsList.slice(0, -1).join("")]
+        parent_position.pop()
 
         currentIndexList[currentIndexList.length - 1] =
-          currentIndexList[currentIndexList.length - 1] + 1;
+          currentIndexList[currentIndexList.length - 1] + 1
       }
     } else {
       //en mode back, on considere
-      currentState = tree[currentActionsList.slice(0, -1).join("")];
+      currentState = tree[currentActionsList.slice(0, -1).join("")]
 
-      parent_position.pop();
+      parent_position.pop()
 
       currentIndexList[currentIndexList.length - 1] =
-        currentIndexList[currentIndexList.length - 1] + 1;
+        currentIndexList[currentIndexList.length - 1] + 1
     }
 
     if (
@@ -313,16 +312,16 @@ function treeToPosiion(tree) {
       currentState.retracted
     ) {
       //si il n'y a plus d'enfant ou qu'on nous demande de ne pas les traiter
-      currentIndexList.pop();
-      goingBack = true;
+      currentIndexList.pop()
+      goingBack = true
     } else {
       if (currentIndexList[currentIndexList.length - 1] !== 0) {
-        height += 1;
+        height += 1
       }
-      goingBack = false;
+      goingBack = false
     }
   }
-  return output;
+  return output
 }
 
 function reduceToOpimalTree(tree, treeToFeel, id, grid, curentPlayer, robot) {
@@ -333,30 +332,33 @@ function reduceToOpimalTree(tree, treeToFeel, id, grid, curentPlayer, robot) {
       ends: grid,
       childrenActions: [],
       timeToWin: tree[grid].timeToWin,
-      winner: tree[grid].winner
-    };
+      winner: tree[grid].winner,
+    }
   } else {
-    const actions = game.actions(grid);
+    const actions = game.actions(grid)
 
     if (curentPlayer === robot) {
-      let bestAction;
-      let newGrid;
-      let minimalTimeToWin = 1000000;
+      let bestAction
+      let newGrid
+      let minimalTimeToWin = 1000000
 
       actions.forEach(action => {
-        newGrid = game.play(grid, action);
-        if (tree[newGrid].timeToWin < minimalTimeToWin && tree[newGrid].winner === tree[grid].winner) {
-          minimalTimeToWin = tree[newGrid].timeToWin;
-          bestAction = action;
+        newGrid = game.play(grid, action)
+        if (
+          tree[newGrid].timeToWin < minimalTimeToWin &&
+          tree[newGrid].winner === tree[grid].winner
+        ) {
+          minimalTimeToWin = tree[newGrid].timeToWin
+          bestAction = action
         }
-      });
+      })
       treeToFeel[id] = {
         grid: grid,
         ends: tree[grid].ends,
         childrenActions: [bestAction],
         timeToWin: tree[grid].timeToWin,
-        winner: tree[grid].winner
-      };
+        winner: tree[grid].winner,
+      }
       reduceToOpimalTree(
         tree,
         treeToFeel,
@@ -364,15 +366,15 @@ function reduceToOpimalTree(tree, treeToFeel, id, grid, curentPlayer, robot) {
         game.play(grid, bestAction),
         (curentPlayer + 1) % 2,
         robot
-      );
+      )
     } else {
       treeToFeel[id] = {
         grid: grid,
         ends: tree[grid].ends,
         childrenActions: actions,
         timeToWin: tree[grid].timeToWin,
-        winner: tree[grid].winner
-      };
+        winner: tree[grid].winner,
+      }
       actions.forEach(action => {
         reduceToOpimalTree(
           tree,
@@ -381,60 +383,59 @@ function reduceToOpimalTree(tree, treeToFeel, id, grid, curentPlayer, robot) {
           game.play(grid, action),
           (curentPlayer + 1) % 2,
           robot
-        );
-      });
+        )
+      })
     }
   }
 }
 
-let completTree = {};
-feelSolutions(completTree, ".........", 0, 2);
+let completTree = {}
+feelSolutions(completTree, ".........", 0, 2)
 
 function perfectPlayer(state) {
-  let solutions = completTree[state].ends;
-  let victory = completTree[state].winner;
-  let player = game.getPlayer(state);
+  let solutions = completTree[state].ends
+  let victory = completTree[state].winner
+  let player = game.getPlayer(state)
 
-  let actions = [];
+  let actions = []
   if (victory === player.toLowerCase()) {
-    let nextGrid;
-    let score;
-    let bestScore = 0;
+    let nextGrid
+    let score
+    let bestScore = 0
     for (let i = 0; i < 9; i++) {
       if (solutions[i] === victory) {
-        nextGrid = completTree[game.play(state, i)].ends;
-        score = nextGrid.split("")
-          .filter(x => x === player.toLowerCase())
-          .length;
+        nextGrid = completTree[game.play(state, i)].ends
+        score = nextGrid.split("").filter(x => x === player.toLowerCase())
+          .length
         if (score > bestScore) {
-          actions = [i];
+          actions = [i]
         } else if (score === bestScore) {
-          actions.push(i);
+          actions.push(i)
         }
       }
     }
   } else if (victory === game.NULL) {
     for (let i = 0; i < 9; i++) {
       if (solutions[i] === game.NULL) {
-        actions.push(i);
+        actions.push(i)
       }
     }
   } else {
     for (let i = 0; i < 9; i++) {
       if (state[i] === game.EMPTY) {
-        actions.push(i);
+        actions.push(i)
       }
     }
   }
 
-  let action = actions[Math.floor(actions.length * Math.random())];
-  return action;
+  let action = actions[Math.floor(actions.length * Math.random())]
+  return action
 }
 
 export {
   completTree,
   perfectPlayer,
-  treeToPosiion,
+  treeToPosition,
   feelSolutions,
-  reduceToOpimalTree
-};
+  reduceToOpimalTree,
+}

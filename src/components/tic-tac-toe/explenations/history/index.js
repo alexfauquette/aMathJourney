@@ -1,33 +1,39 @@
-import React from "react";
-import Board from "src/components/tic-tac-toe/atoms/Board";
-import Game from "src/components/tic-tac-toe/explenations/utils/game";
-import Link from "src/components/tic-tac-toe/atoms/Link";
+import React from "react"
+import Board from "src/components/tic-tac-toe/atoms/Board"
+import Game from "src/components/tic-tac-toe/explenations/utils/game"
+import Link from "src/components/tic-tac-toe/atoms/Link"
 
-const game = new Game();
+const game = new Game()
 
 class History extends React.Component {
   constructor(props) {
-    super(props);
-    this.init = [".........", "......X..", "...O..X.."];
+    super(props)
+    this.init = [".........", "......X..", "...O..X.."]
+    this.initActions = [6, 3]
     this.state = {
-      grids: this.init
-    };
+      grids: this.init,
+      actions: this.initActions,
+    }
   }
 
   playerAction(index) {
     return action => () => {
-      let grids = this.state.grids.slice(0, index + 1);
-      grids.push(game.play(this.state.grids[index], action));
-      this.setState({ grids: grids });
-    };
+      let grids = this.state.grids.slice(0, index + 1)
+      let actions = this.state.actions.slice(0, index)
+
+      grids.push(game.play(this.state.grids[index], action))
+      actions.push(action)
+      this.setState({ grids, actions })
+    }
   }
 
   reset() {
     return () => {
       this.setState({
-        grids: this.init
-      });
-    };
+        grids: this.init,
+        actions: this.initActions,
+      })
+    }
   }
 
   render() {
@@ -46,6 +52,7 @@ class History extends React.Component {
                 }
                 winner={game.getWinner(grid)}
                 victory={game.getVictory(grid)}
+                addedIndex={gridIndex > 0 && this.state.actions[gridIndex - 1]}
               />
               {gridIndex > 0 && (
                 <Link
@@ -60,7 +67,7 @@ class History extends React.Component {
         </svg>
         <button onClick={this.reset()}>RESET</button>
       </>
-    );
+    )
   }
 }
-export default History;
+export default History

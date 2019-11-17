@@ -3,7 +3,7 @@ import Board from "src/components/tic-tac-toe/atoms/Board"
 import Game from "src/components/tic-tac-toe/explenations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/Link"
 import {
-  treeToPosiion,
+  treeToPosition,
   feelSolutions,
   reduceToOpimalTree,
 } from "src/components/tic-tac-toe/explenations/utils"
@@ -62,7 +62,7 @@ class CompletTree extends React.Component {
 
   render() {
     const SIZE = 75
-    const treePositions = treeToPosiion(this.state.tree)
+    const treePositions = treeToPosition(this.state.tree)
     const height = treePositions.reduce((t, x) => Math.max(t, x.y), 0)
     return (
       <>
@@ -84,6 +84,9 @@ class CompletTree extends React.Component {
                   globalAction={this.toogleChildrens(state.id)}
                   winner={state.winner}
                   victory={game.getVictory(state.grid)}
+                  addedIndex={
+                    state.id && parseInt(state.id.charAt(state.id.length - 1))
+                  }
                 />
                 {state.parent && (
                   <Link
