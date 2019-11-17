@@ -21,7 +21,9 @@ class CompletTree extends React.Component {
     let optTreeRobot = {}
     reduceToOpimalTree(treeRobot, optTreeRobot, "", ".........", 0, props.robot)
     this.state = {
+      robot: props.robot,
       tree: optTreeRobot,
+      initialTree: optTreeRobot,
       height: optTreeRobot[""].timeToWin,
       heightLimited: true,
     }
@@ -44,8 +46,8 @@ class CompletTree extends React.Component {
   reset() {
     return () => {
       this.setState({
-        tree: this.state.InitialTree,
-        height: 2,
+        ...this.state,
+        tree: this.state.initialTree,
       })
     }
   }
@@ -62,7 +64,6 @@ class CompletTree extends React.Component {
     const SIZE = 75
     const treePositions = treeToPosiion(this.state.tree)
     const height = treePositions.reduce((t, x) => Math.max(t, x.y), 0)
-    console.log(height)
     return (
       <>
         <div

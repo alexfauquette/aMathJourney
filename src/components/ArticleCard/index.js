@@ -7,7 +7,7 @@ const ArticleCard = ({ articleLocation, title, image, description }) => {
     <Link to={articleLocation}>
       <div className={classes.root}>
         <h2>{title}</h2>
-        {image && <img src={image} />}
+        {image && <img src={image} alt="" />}
         <p>{description}</p>
       </div>
     </Link>
