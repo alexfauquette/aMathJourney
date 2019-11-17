@@ -144,7 +144,6 @@ class PlayableComputerView extends React.Component {
   }
   removeRobot(playerId) {
     return () => {
-      console.log("remove robot : ", playerId)
       if (this.state.robot.includes(playerId)) {
         clearTimeout(this.waitingAction)
         this.setState(
