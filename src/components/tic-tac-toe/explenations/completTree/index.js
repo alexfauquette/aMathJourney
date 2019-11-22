@@ -105,7 +105,7 @@ class CompletTree extends React.Component {
             onClick={this.toogleHeightLimited()}
             className="treeExtension"
           >
-            {this.state.heightLimited ? "Extand" : "Retract"}
+            {this.state.heightLimited ? "Extend" : "Retract"}
           </button>
         )}
         <button onClick={this.reset()}>RESET</button>

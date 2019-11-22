@@ -1,6 +1,6 @@
 .root .menuTitle {
   background-color: transparent;
-  color: white;
+  color: var(--blue-900);
 }
 
 .root .menuTitle span {
@@ -9,7 +9,7 @@
 
 .menu .link {
   background-color: transparent;
-  color: black;
+  color: var(--blue-900);
   text-decoration: none;
 }
 

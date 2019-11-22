@@ -11,25 +11,31 @@ const Header = ({
   languages = { Français: "fr", English: "" },
 }) => (
   <header className={classes.header}>
-    <div className={classes.container}>
-      <h1 style={{ margin: 0 }}>
-        <Link to={`/${languages[currentLanguage]}`} className={classes.title}>
-          {siteTitle}
-        </Link>{" "}
-        {`${currentLanguage === "Français" ? "par" : "from"} `}
-        <Link
-          to={`/about/${languages[currentLanguage]}`}
-          className={classes.subtitle}
-        >
-          Alexandre Fauquette
-        </Link>
-      </h1>
+    <div className={classes.firstLine}>
+      <Link to={`/${languages[currentLanguage]}`} className={classes.title}>
+        <h1 style={{ margin: 0 }}>{siteTitle}</h1>
+      </Link>
       <LangSelector
         currentLanguage={currentLanguage}
         location={location}
         style={{ float: "right" }}
       />
     </div>
+    <ol className={classes.menu}>
+      <li>
+        <Link
+          to={`/about/${languages[currentLanguage]}`}
+          className={classes.subtitle}
+        >
+          About
+        </Link>
+      </li>
+      <li>
+        <Link to={`/${languages[currentLanguage]}`} className={classes.title}>
+          Home
+        </Link>
+      </li>
+    </ol>
   </header>
 )
 

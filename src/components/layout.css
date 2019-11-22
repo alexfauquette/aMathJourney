@@ -639,7 +639,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightblue;
+  background-color: var(--gray-100);
 }
 
 code {
@@ -731,14 +731,6 @@ body {
 
 p {
   text-align: left;
-}
-
-article {
-  margin: 100px auto;
-  max-width: 850px;
-  padding: 2%;
-  border-radius: 10px;
-  background-color: white;
 }
 
 button {
@@ -897,8 +889,10 @@ li {
 .treeExtension {
   width: 100%;
   border-radius: 0;
+  box-sizing: border-box;
 }
 :root {
+  --gray-100: #eceff1;
   --gray-300: #e0e0e0;
   --gray-400: #bdbdbd;
 

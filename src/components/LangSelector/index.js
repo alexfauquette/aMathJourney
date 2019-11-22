@@ -4,11 +4,14 @@ import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import { Link } from "gatsby"
 import LanguageIcon from "@material-ui/icons/Language"
-import classes from "./style.module.css"
+import classes from "./style.module.scss"
 
 const LangSelector = ({
   currentLanguage = "English",
-  languages = [{ name: "Français", file: "fr" }, { name: "English", file: "" }],
+  languages = [
+    { name: "Français", file: "fr" },
+    { name: "English", file: "" },
+  ],
   location = "/",
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)

@@ -1,31 +1,38 @@
 .header {
-  background-color: var(--blue-900);
+  background-color: white;
   margin: 0 0 1.45rem 0;
   width: 100%;
-}
 
-.container {
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
-  display: flex;
-  justify-content: space-between;
-  color: var(--gray-400);
-  text-align: left;
-  h1 {
-    font-size: 100%;
-    .title {
+  .firstLine {
+    margin: 0;
+    padding: 1.45rem 1.0875rem;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    h1 {
+      color: var(--blue-900);
       font-size: 200%;
+      @media (max-width: 900px) {
+        font-size: 150%;
+      }
     }
-    .subtitle {
-      font-size: 125%;
+    h1:hover {
+      color: black;
     }
-    .title, .subtitle{
-      color: white;
+  }
+
+  .menu {
+    text-align: center;
+    li {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 4px 8px;
+      a {
+        color: var(--blue-900);
+      }
     }
-    .title:hover, .subtitle:hover{
-      color: var(--gray-300);
+    li:hover a {
+      color: black;
     }
-    
   }
 }

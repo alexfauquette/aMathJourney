@@ -81,10 +81,7 @@ class RecurenceExample extends React.Component {
 
     return (
       <>
-        <svg
-          viewBox={`0 0 ${totalWidth} 300`}
-          style={{ height: "300px", width: "100%" }}
-        >
+        <svg viewBox={`0 0 ${totalWidth} 300`} style={{ width: "100%" }}>
           {this.state.grids.map((grid, gridIndex) => (
             <React.Fragment key={gridIndex + "-" + grid}>
               <Board
