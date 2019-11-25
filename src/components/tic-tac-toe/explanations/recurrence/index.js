@@ -1,11 +1,11 @@
 import React from "react"
 import Board from "src/components/tic-tac-toe/atoms/Board"
-import Game from "src/components/tic-tac-toe/explenations/utils/game"
+import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/LinkVertical"
-import { completTree as tree } from "src/components/tic-tac-toe/explenations/utils"
+import { completTree as tree } from "src/components/tic-tac-toe/explanations/utils"
 const game = new Game()
 
-class RecurenceExample extends React.Component {
+class RecurrenceExample extends React.Component {
   constructor(props) {
     super(props)
     this.gridsInit = ["...XXO.O.", "OX.X...O.", "X..X..OO."]
@@ -151,4 +151,4 @@ class RecurenceExample extends React.Component {
     )
   }
 }
-export default RecurenceExample
+export default RecurrenceExample

@@ -1,7 +1,7 @@
 import React from "react"
 import Board from "src/components/tic-tac-toe/atoms/Board"
-import Game from "src/components/tic-tac-toe/explenations/utils/game"
-import { perfectPlayer } from "src/components/tic-tac-toe/explenations/utils"
+import Game from "src/components/tic-tac-toe/explanations/utils/game"
+import { perfectPlayer } from "src/components/tic-tac-toe/explanations/utils"
 
 import human from "../../images/human.svg"
 import robot from "../../images/robot.svg"

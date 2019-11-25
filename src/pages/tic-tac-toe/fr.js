@@ -6,13 +6,13 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 
 //components
-import PlayableIntro from "src/components/tic-tac-toe/explenations/intro"
-import History from "src/components/tic-tac-toe/explenations/history"
-import TreeIntro from "src/components/tic-tac-toe/explenations/introTree"
-import RecurenceExample from "src/components/tic-tac-toe/explenations/recurence"
-import ComputerView from "src/components/tic-tac-toe/explenations/computerView"
-import TreeSearch from "src/components/tic-tac-toe/explenations/treeSearch"
-import CompletTree from "src/components/tic-tac-toe/explenations/completTree"
+import PlayableIntro from "src/components/tic-tac-toe/explanations/intro"
+import History from "src/components/tic-tac-toe/explanations/history"
+import TreeIntro from "src/components/tic-tac-toe/explanations/introTree"
+import RecurrenceExample from "src/components/tic-tac-toe/explanations/recurrence"
+import ComputerView from "src/components/tic-tac-toe/explanations/computerView"
+import TreeSearch from "src/components/tic-tac-toe/explanations/treeSearch"
+import CompletTree from "src/components/tic-tac-toe/explanations/completTree"
 
 //images
 import algoPicture from "./images/algo.svg"
@@ -58,7 +58,7 @@ const Page = () => (
 
     <p>
       Jusque-là pas grand-chose de spécial. Une partie de morpion c'est une
-      suite de différentes grilles, de plus en plus compleète. Mais la puissance
+      suite de différentes grilles, de plus en plus complète. Mais la puissance
       de l'ordinateur, c'est qu'il peut retourner facilement dans le passer pour
       tester d'autre possibilités. Dans l'exemple ci-dessous, le premier joueur
       réalise qu'il s'est trompé en choisissant son deuxième coup. Qu'il aurait
@@ -150,9 +150,9 @@ const Page = () => (
       <span style={{ color: "red" }}>O</span>) alignés, alors c'est une grille
       gagnante pour <span style={{ color: "blue" }}>X</span> (ou{" "}
       <span style={{ color: "red" }}>O</span>). Et si la grille est remplie sans
-      que 3 symbols soient alligés, c'est une grille{" "}
+      que 3 symbols soient alignés, c'est une grille{" "}
       <span style={{ color: "orange" }}>nul</span>. #CaptainObvious C'est
-      basique, mais ça va meiux en le disant.
+      basique, mais ça va mieux en le disant.
     </p>
 
     <img
@@ -161,7 +161,7 @@ const Page = () => (
     />
 
     <p>
-      Maintnenant on va gérer les cas plus compliqués. Premièrement on va
+      Maintenant on va gérer les cas plus compliqués. Premièrement on va
       supposer que tout le monde est un bon joueur. Si un bon joueur peut jouer
       une action qui est gagnant pour lui il la joue. Sinon il joue pour obtenir
       un nul, et sinon il est obligé de perdre. Bref, la même logique que notre
@@ -180,7 +180,7 @@ const Page = () => (
       <span style={{ color: "blue" }}>X</span> de jouer. Dans le premier cas, il
       a une action qui l'amène sur une grille gagnante pour lui. Dans le second
       cas, il y a des actions <span style={{ color: "orange" }}>nul</span> et
-      des actions gagantes pour <span style={{ color: "red" }}>O</span>, c'est
+      des actions gagnantes pour <span style={{ color: "red" }}>O</span>, c'est
       donc une grille <span style={{ color: "orange" }}>nul</span>. Et le
       dernier cas, quoi que fasse <span style={{ color: "blue" }}>X</span>, il
       arrivera sur une grille permettant à{" "}
@@ -188,35 +188,35 @@ const Page = () => (
       gagnante pour <span style={{ color: "red" }}>O</span>.
     </p>
 
-    <RecurenceExample />
+    <RecurrenceExample />
 
     <p>
       La façon la plus simple de calculer qui va gagner est d'appliquer les
       règles que l'on vient de présenter. On crée une fonction "getWinner"
       ("donne le gagnant" en anglais), qui pour une grille de morpion donnée
-      renvoit le gagnant associé. Si c'est un cas final, la fonction revoit le
+      renvoi le gagnant associé. Si c'est un cas final, la fonction revoit le
       gagnant. Si non, on test toutes les actions possibles, on appel
       "getWinner" pour savoir si ces actions font gagner{" "}
       <span style={{ color: "blue" }}>X</span>,{" "}
       <span style={{ color: "red" }}>O</span> ou{" "}
-      <span style={{ color: "orange" }}>nul</span>. Maintnenant que l'on connait
-      le resultat de toute les actions possibles, on peut utiliser la relation
-      de récurence précédente pour savoir qui sera le gagant.
+      <span style={{ color: "orange" }}>nul</span>. Maintenant que l'on connaît
+      le résultat de toute les actions possibles, on peut utiliser la relation
+      de récurrence précédente pour savoir qui sera le gagnant.
     </p>
 
-    <img src={algoPicture} alt="schémat de l'algorithme" />
+    <img src={algoPicture} alt="schemat de l'algorithme" />
 
     <p>
-      What ?!? Pour calculer le réultat de "getWiner" il faut utiliser ...
-      "getWiner" ? Pas d'inquietude, c'est normal, c'est une fonction récurcive.
-      A chaque fois que "getWinner" appelle "getWinner", elle lui demande de
-      calculer le résultat pour une grille un peu plus remplie. Donc si
-      "getWiner" appel "getWiner" qui appel "getWiner", etc 9 fois, on arrive
-      forcément à un cas final, car chaque fonction ajoute un symbole, et avec 9
-      symboles, la grille est remplie. Grace au résultat des grilles remplies,
-      on va pouvoir galculer les "getWinner" précédents, puis avec leurs
-      resulats on calcul les "getWinner" précédents, et on continue comme ça
-      jusque à arriver au premier.
+      What ?!? Pour calculer le résultat de "getWinner" il faut utiliser ...
+      "getWinner" ? Pas d'inquietude, c'est normal, c'est une fonction
+      récursive. A chaque fois que "getWinner" appelle "getWinner", elle lui
+      demande de calculer le résultat pour une grille un peu plus remplie. Donc
+      si "getWinner" appel "getWinner" qui appel "getWinner", etc 9 fois, on
+      arrive forcément à un cas final, car chaque fonction ajoute un symbole, et
+      avec 9 symboles, la grille est remplie. Grace au résultat des grilles
+      remplies, on va pouvoir calculer les "getWinner" précédents, puis avec
+      leurs résultats on calcul les "getWinner" précédents, et on continue comme
+      ça jusque à arriver au premier.
     </p>
     <p>
       Pas convaincu ? En appuyant sur next, faite défiler l'algorithme étape par

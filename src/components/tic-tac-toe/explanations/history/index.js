@@ -1,6 +1,6 @@
 import React from "react"
 import Board from "src/components/tic-tac-toe/atoms/Board"
-import Game from "src/components/tic-tac-toe/explenations/utils/game"
+import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/Link"
 
 const game = new Game()

@@ -5,7 +5,7 @@ import Layout from "src/components/layout"
 import SEO from "src/components/seo"
 
 //components
-import CompletTree from "src/components/tic-tac-toe/explenations/completTree"
+import CompletTree from "src/components/tic-tac-toe/explanations/completTree"
 
 const Page = () => (
   <Layout location="/tic-tac-toe/second-player-tree">

@@ -1,12 +1,12 @@
 import React from "react"
 import Board from "src/components/tic-tac-toe/atoms/Board"
-import Game from "src/components/tic-tac-toe/explenations/utils/game"
+import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/Link"
 import {
   treeToPosition,
   feelSolutions,
   reduceToOpimalTree,
-} from "src/components/tic-tac-toe/explenations/utils"
+} from "src/components/tic-tac-toe/explanations/utils"
 
 const game = new Game()
 
