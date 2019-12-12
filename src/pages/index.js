@@ -5,10 +5,8 @@ import ArticleCard from "src/components/ArticleCard"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <Layout location="/">
+  <Layout location="/" showAbout>
     <SEO title="Home" />
-    <p>Welcome on my website, I'm please to propose you some interactive explanations.</p>
-
     <ArticleCard
       articleLocation="/tic-tac-toe/"
       title="tic-tac-toe AI"

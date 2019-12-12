@@ -5,12 +5,8 @@ import ArticleCard from "src/components/ArticleCard"
 import SEO from "src/components/seo"
 
 const IndexPage = () => (
-  <Layout location="/" currentLanguage="Français">
+  <Layout location="/" currentLanguage="Français" showAbout>
     <SEO title="Accueil" />
-    <p>
-      Bienvenu sur mon site, Je vous y trouverez des explications interactives.
-    </p>
-
     <ArticleCard
       articleLocation="/tic-tac-toe/fr"
       title="AI pour un morpion"

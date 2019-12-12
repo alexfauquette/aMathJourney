@@ -12,15 +12,29 @@ import PropTypes from "prop-types"
 import Header from "./Header"
 import "./layout.css"
 import classes from "./layout.module.scss"
+import { default as AboutEn } from "src/components/About/en"
+import { default as AboutFr } from "src/components/About/fr"
 
-const Layout = ({ children, location, currentLanguage = "English" }) => (
+const Layout = ({
+  children,
+  location,
+  currentLanguage = "English",
+  showAbout = false,
+}) => (
   <div className={classes.root}>
     <Header
       siteTitle="A Mathematical Journey"
       {...{ currentLanguage, location }}
     />
     <main>
-      <article className={classes.article}>{children}</article>
+      <article className={classes.article}>
+        {showAbout ? (
+          <div className={classes.aboutContainer}>
+            {currentLanguage === "Français" ? <AboutFr /> : <AboutEn />}
+          </div>
+        ) : null}
+        {children}
+      </article>
     </main>
     <footer>
       © {new Date().getFullYear()}, Built with
