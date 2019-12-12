@@ -1,20 +1,16 @@
 .root {
-  background-color: white;
   color: black;
-  width: 300px;
-  height: 400px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: transform 0.5s;
+  height: max-content;
+  padding: 32px 16px;
+  transition: box-shadow 0.1s;
+  text-align: left;
+  &:hover {
+    box-shadow: 4px 4px 5px 4px rgba(0, 0, 0, 0.2);
+  }
   h2 {
     font-size: 150%;
   }
   p {
     font-size: 100%;
   }
-}
-
-.root:hover{
-  transform: translate(0px,-5px);// scale(1.01);
 }

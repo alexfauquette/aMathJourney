@@ -9,8 +9,11 @@ const IndexPage = () => (
     <SEO title="Accueil" />
     <ArticleCard
       articleLocation="/tic-tac-toe/fr"
-      title="AI pour un morpion"
-      description="Pouvez vous battre une intelligence au morpion ? Tel est la défis de cet article. Essayez de battre mon IA avant de découvrir comment elle fonctionne."
+      title="Peut on battre une IA au morpion ?"
+      description="La plupart des articles scientifiques en intelligences artificielle qui
+      font sensation parlent d'ordinateur battant le champion du monde d’échec,
+      de Go, et bientôt Dota. Dans cet article, on va retourner à l'age de
+      pierre de l'IA pour jouer au morpion."
     />
   </Layout>
 )

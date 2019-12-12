@@ -9,8 +9,11 @@ const IndexPage = () => (
     <SEO title="Home" />
     <ArticleCard
       articleLocation="/tic-tac-toe/"
-      title="tic-tac-toe AI"
-      description="Can you defeat an AI at tic-tac-toe? That's the challenge of this article. Lets try to beat it before studying how it works."
+      title="Can you defeat an AI at tic-tac-toe?"
+      description="Most of the exciting scientific articles in artificial intelligence are
+      about computer defeating human at famous game. For this article lets just
+      consider the simple game of tic-tac-toe and solve it with technics coming
+      from the stone age of AI."
     />
   </Layout>
 )
