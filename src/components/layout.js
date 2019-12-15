@@ -26,15 +26,13 @@ const Layout = ({
       siteTitle="A Mathematical Journey"
       {...{ currentLanguage, location }}
     />
-    <main>
-      <article className={classes.article}>
-        {showAbout ? (
-          <div className={classes.aboutContainer}>
-            {currentLanguage === "Français" ? <AboutFr /> : <AboutEn />}
-          </div>
-        ) : null}
-        {children}
-      </article>
+    <main className={classes.main}>
+      <article className={classes.article}>{children}</article>
+      {showAbout ? (
+        <div className={classes.aboutContainer}>
+          {currentLanguage === "Français" ? <AboutFr /> : <AboutEn />}
+        </div>
+      ) : null}
     </main>
     <footer>
       © {new Date().getFullYear()}, Built with

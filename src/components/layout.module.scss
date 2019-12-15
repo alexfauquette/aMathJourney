@@ -14,28 +14,24 @@ $topBottomPadding: 64px;
   }
 }
 
+.main {
+  display: flex;
+  justify-content: center;
+  padding: $minSideMargin;
+}
+
 .article {
-  position: relative;
-  margin-left: $minSideMargin;
-  margin-right: $minSideMargin;
   background-color: white;
   padding: $topBottomPadding $leftRightPadding;
-  @media (min-width: $articleWidth+2*$minSideMargin) {
-    max-width: $articleWidth;
-    padding: $topBottomPadding $leftRightPadding;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .aboutContainer {
-    width: $bioSize;
-    position: absolute;
-    left: $articleWidth + $minSideMargin + 2 * $leftRightPadding;
-    background-color: white;
-    padding: $topBottomPadding $leftRightPadding;
-    top: 0;
+  max-width: $articleWidth;
+}
+.aboutContainer {
+  width: $bioSize;
+  background-color: white;
+  padding: $topBottomPadding $leftRightPadding;
+  margin-left: $minSideMargin;
 
-    @media (max-width: $articleWidth+$bioSize+3*$minSideMargin) {
-      display: none;
-    }
+  @media (max-width: $articleWidth+2*$bioSize+3*$minSideMargin) {
+    display: none;
   }
 }
