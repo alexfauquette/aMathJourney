@@ -3,6 +3,23 @@
   stroke-width: 1;
 }
 
-.circle {
+.interactiveCircle {
   fill: transparent;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.subWord1 {
+  fill: blue;
+  stroke: blue;
+}
+
+.subWord2 {
+  fill: red;
+  stroke: red;
+}
+
+.nomalWord {
+  fill: black;
 }

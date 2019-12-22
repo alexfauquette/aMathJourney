@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import classes from "./gridStyle.module.scss"
 
-const COLUMN_SIZE = 30
+export const COLUMN_SIZE = 30
 
-export const Grid = ({ word1, word2 }) => (
+export const Grid = ({ word1, word2, subWord1, subWord2 }) => (
   <>
     {`_${word1}`.split("").map((char, index) => (
       <>
@@ -19,6 +19,11 @@ export const Grid = ({ word1, word2 }) => (
           dominant-baseline="middle"
           x={COLUMN_SIZE * (index + 1.5)}
           y={COLUMN_SIZE * 0.5}
+          className={
+            subWord1 && index < subWord1.length
+              ? classes.subWord1
+              : classes.nomalWord
+          }
         >
           {char}
         </text>
@@ -38,6 +43,11 @@ export const Grid = ({ word1, word2 }) => (
           dominant-baseline="middle"
           y={COLUMN_SIZE * (index + 1.5)}
           x={COLUMN_SIZE * 0.5}
+          className={
+            subWord2 && index < subWord2.length
+              ? classes.subWord2
+              : classes.nomalWord
+          }
         >
           {char}
         </text>
@@ -55,7 +65,7 @@ export const InteractiveCircle = ({ word1, word2, onEnter }) => (
           .split("")
           .map((_, index2) => (
             <circle
-              className={classes.circle}
+              className={classes.interactiveCircle}
               cx={COLUMN_SIZE * (index1 + 1.5)}
               cy={COLUMN_SIZE * (index2 + 1.5)}
               r={COLUMN_SIZE / 2 - 1}
@@ -70,7 +80,7 @@ export const InteractiveCircle = ({ word1, word2, onEnter }) => (
         .split("")
         .map((_, index2) => (
           <circle
-            className={classes.circle}
+            className={classes.interactiveCircle}
             cx={COLUMN_SIZE * (0 + 1.5)}
             cy={COLUMN_SIZE * (index2 + 1.5)}
             r={COLUMN_SIZE / 2 - 1}
