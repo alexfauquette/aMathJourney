@@ -1,5 +1,9 @@
-import React, { useState, useCallback } from "react"
-import { Grid, InteractiveCircle, COLUMN_SIZE } from "../atoms/Grid"
+import React, { useState } from "react"
+import {
+  Grid,
+  InteractiveCircle,
+} from "src/components/DynamicProgram/atoms/Grid"
+import { COLUMN_SIZE } from "src/components/DynamicProgram/constants.js"
 import classes from "./styles.module.scss"
 
 const InteractiveGrid = ({ startWord1, startWord2 }) => {

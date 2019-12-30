@@ -1,0 +1,32 @@
+.activeCircle {
+  fill: black;
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  .grid {
+    display: flex;
+    flex-direction: column;
+    max-width: max-content;
+    justify-content: center;
+    .text {
+      margin: 0;
+      padding: 8px 0 0 8px;
+    }
+    .text1 {
+      color: blue;
+    }
+    .text2 {
+      color: red;
+    }
+    .inputContainer {
+      display: flex;
+      input {
+        flex-grow: 1;
+        padding: 5px;
+      }
+    }
+  }
+}

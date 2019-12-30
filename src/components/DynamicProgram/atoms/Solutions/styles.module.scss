@@ -1,0 +1,65 @@
+.wordsContainer {
+  display: inline-block;
+  margin-right: 2px;
+  padding: 4px;
+  border: solid black 2px;
+  border-radius: 4px;
+  width: max-content;
+  line-height: 1rem;
+  .word1 {
+    font-family: monospace;
+    margin: 0 0 2px 0;
+    width: max-content;
+  }
+  .word2 {
+    font-family: monospace;
+    margin: 0;
+    width: max-content;
+  }
+}
+
+.charsContainer {
+  display: inline-block;
+  margin-right: 2px;
+  padding: 4px;
+  border-radius: 2px;
+  color: white;
+  width: max-content;
+  line-height: 1rem;
+  p {
+    font-family: monospace;
+  }
+  .char1 {
+    margin: 0 0 2px 0;
+  }
+  .char2 {
+    margin: 0;
+  }
+}
+.match {
+  background-color: green;
+}
+.withEmpty {
+  background-color: orange;
+}
+.mismatch {
+  background-color: red;
+}
+
+.matchValue {
+  color: green;
+}
+.withEmptyValue {
+  color: orange;
+}
+.mismatchValue {
+  color: red;
+}
+
+.score {
+  border: solid black 2px;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+}

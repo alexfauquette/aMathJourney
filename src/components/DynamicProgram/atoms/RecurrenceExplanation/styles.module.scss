@@ -1,0 +1,27 @@
+.alignLeft {
+  text-align: left;
+  margin: 2px 0;
+}
+
+.solutionsContainer {
+  border-radius: 4px;
+  padding: 4px;
+  margin-left: 4px;
+}
+.leftBar {
+  border-left: solid black 1px;
+}
+
+.recurrenceShowBlock {
+  display: flex;
+  align-items: center;
+}
+
+.computationLine {
+  display: flex;
+  align-items: center;
+}
+
+.hideLine {
+  opacity: 0.5;
+}

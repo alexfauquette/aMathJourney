@@ -1,7 +1,10 @@
 import React from "react"
-import classes from "./gridStyle.module.scss"
-
-export const COLUMN_SIZE = 30
+import classes from "./styles.module.scss"
+import {
+  COLUMN_SIZE,
+  LARGE_CIRCLE_RADIUS,
+  MEDIUM_CIRCLE_RADIUS,
+} from "src/components/DynamicProgram/constants.js"
 
 export const Grid = ({ word1, word2, subWord1, subWord2 }) => (
   <>
@@ -68,7 +71,7 @@ export const InteractiveCircle = ({ word1, word2, onEnter }) => (
               className={classes.interactiveCircle}
               cx={COLUMN_SIZE * (index1 + 1.5)}
               cy={COLUMN_SIZE * (index2 + 1.5)}
-              r={COLUMN_SIZE / 2 - 1}
+              r={LARGE_CIRCLE_RADIUS}
               onMouseEnter={onEnter(
                 `_${word1}`.slice(0, index1 + 1),
                 `_${word2}`.slice(0, index2 + 1)
@@ -83,7 +86,7 @@ export const InteractiveCircle = ({ word1, word2, onEnter }) => (
             className={classes.interactiveCircle}
             cx={COLUMN_SIZE * (0 + 1.5)}
             cy={COLUMN_SIZE * (index2 + 1.5)}
-            r={COLUMN_SIZE / 2 - 1}
+            r={LARGE_CIRCLE_RADIUS}
             onMouseEnter={onEnter(
               `_${word1}`.slice(0, 0 + 1),
               `_${word2}`.slice(0, index2 + 1)
@@ -93,3 +96,62 @@ export const InteractiveCircle = ({ word1, word2, onEnter }) => (
     )}
   </>
 )
+
+export const DisplayValues = ({ word1, word2, values }) => {
+  return (
+    <>
+      {`_${word1}`.split("").reduce(
+        (accu, _, index1) => [
+          ...accu,
+          ...`_${word2}`.split("").map((_, index2) => {
+            const key =
+              `_${word1}`.slice(0, index1 + 1) +
+              "-" +
+              `_${word2}`.slice(0, index2 + 1)
+            const v = values[key]
+            return v !== undefined ? (
+              <>
+                <circle
+                  className={classes.interactiveCircle}
+                  cx={COLUMN_SIZE * (index1 + 1.5)}
+                  cy={COLUMN_SIZE * (index2 + 1.5)}
+                  r={MEDIUM_CIRCLE_RADIUS}
+                />
+                <text
+                  text-anchor="middle"
+                  dominant-baseline="middle"
+                  x={COLUMN_SIZE * (index1 + 1.5)}
+                  y={COLUMN_SIZE * (index2 + 1.5)}
+                >
+                  {v}
+                </text>
+              </>
+            ) : null
+          }),
+        ],
+        `_${word2}`.split("").map((_, index2) => {
+          const key = "_-" + `_${word2}`.slice(0, index2 + 1)
+          const v = values[key]
+          return v ? (
+            <>
+              <circle
+                className={classes.interactiveCircle}
+                cx={COLUMN_SIZE * 1.5}
+                cy={COLUMN_SIZE * (index2 + 1.5)}
+                r={MEDIUM_CIRCLE_RADIUS}
+              />
+              <text
+                text-anchor="middle"
+                dominant-baseline="middle"
+                x={COLUMN_SIZE * 1.5}
+                y={COLUMN_SIZE * (index2 + 1.5)}
+              >
+                {v}
+              </text>
+            </>
+          ) : null
+        })
+      )}
+    </>
+  )
+}

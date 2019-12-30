@@ -1,0 +1,36 @@
+.link {
+  stroke: black;
+  stroke-width: 1;
+}
+.circle {
+  fill: none;
+}
+
+.saveLink {
+  stroke: black;
+}
+.goodLink {
+  stroke: green;
+}
+.badLink {
+  stroke: red;
+}
+.notComputableLink {
+  stroke: orange;
+}
+
+.saveCircle {
+  stroke: black;
+}
+.goodCircle {
+  stroke: green;
+}
+.resultCircle {
+  stroke: blue;
+}
+.badCircle {
+  stroke: red;
+}
+.notComputableCircle {
+  stroke: orange;
+}
