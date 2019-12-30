@@ -3,8 +3,8 @@ import InteractiveGrid from "src/components/DynamicProgram/explanations/Interact
 import InteractiveRecurrence from "src/components/DynamicProgram/explanations/InteractiveRecurrence"
 const Page = () => (
   <>
-    <InteractiveGrid startWord1="ABCD" startWord2="KJZ" />
-    <InteractiveRecurrence startWord1="ABCD" startWord2="KJZ" />
+    <InteractiveGrid startWord1="ABBABABBBAA" startWord2="ABBABABABBAB" />
+    <InteractiveRecurrence startWord1="ABBABABBBAA" startWord2="ABBABABABBAB" />
   </>
 )
 

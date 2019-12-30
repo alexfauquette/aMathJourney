@@ -9,7 +9,6 @@ import {
   SAVE,
 } from "../../constants.js"
 import classes from "./styles.module.scss"
-import Links from "../Links/index.js"
 
 export const getCost = (char1, char2) => {
   if (char1 === char2) return 0
@@ -56,7 +55,7 @@ const RecurrenceRelation = ({
   if (isComputable) {
     minValue = Object.keys(recurrentValues)
       .map(key => recurrentValues[key].value)
-      .sort()[0]
+      .sort((a, b) => a - b)[0]
     if (typeof values[key] !== "number") {
       setValues({ ...values, [key]: minValue })
       setLinks({
