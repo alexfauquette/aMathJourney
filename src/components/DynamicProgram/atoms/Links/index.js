@@ -22,7 +22,39 @@ export const computeSolutions = (links, state, solutions) => {
   }, [])
 }
 
-const Links = ({ links }) => {
+export const fillLinksWithPaths = (links, solutions) => {
+  solutions.forEach(({ word1, word2 }) => {
+    for (let i = 1; i <= word1.length; i++) {
+      const subWord1 = word1
+        .slice(0, i)
+        .split("")
+        .filter(e => e !== "_")
+        .join("")
+      const subWord2 = word2
+        .slice(0, i)
+        .split("")
+        .filter(e => e !== "_")
+        .join("")
+
+      const char1 = word1.slice(i - 1, i)
+      const char2 = word2.slice(i - 1, i)
+
+      const used_dx = char1 === "_" ? 0 : -1
+      const used_dy = char2 === "_" ? 0 : -1
+      const key = `_${subWord1}-_${subWord2}`
+      links[key] = links[key].map(({ dx, dy, paths }) =>
+        dx === used_dx && dy === used_dy
+          ? { dx, dy, paths: [...paths, `${word1}-${word2}`] }
+          : { dx, dy, paths }
+      )
+    }
+  })
+  return links
+}
+
+const isSelected = (selectedSolution, paths) => paths.includes(selectedSolution)
+
+const Links = ({ links, showSolutions, selectedSolution }) => {
   return (
     <>
       {Object.keys(links).reduce((accumulator, key) => {
@@ -30,7 +62,6 @@ const Links = ({ links }) => {
           ...accumulator,
           ...links[key].map(({ dx, dy, paths }) => {
             const [subWord1, subWord2] = key.split("-")
-
             const Dx =
               dx === 0
                 ? 0
@@ -51,7 +82,18 @@ const Links = ({ links }) => {
                 y1={COLUMN_SIZE * (subWord2.length + dy + 0.5) + Dy}
                 x2={COLUMN_SIZE * (subWord1.length + 0.5) - Dx}
                 y2={COLUMN_SIZE * (subWord2.length + 0.5) - Dy}
-                className={`${classes.link}`}
+                className={`${classes.link} ${
+                  showSolutions && paths.length === 0 ? classes.transparent : ""
+                } ${
+                  showSolutions && isSelected(selectedSolution, paths)
+                    ? dx === dy
+                      ? subWord1[subWord1.length - 1] ===
+                        subWord2[subWord2.length - 1]
+                        ? classes.matchLink
+                        : classes.missmatchLink
+                      : classes.emptyLink
+                    : ""
+                }`}
               />
             ) : null
           }),

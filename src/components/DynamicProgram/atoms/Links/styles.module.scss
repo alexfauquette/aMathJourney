@@ -34,3 +34,20 @@
 .notComputableCircle {
   stroke: orange;
 }
+
+.transparent {
+  opacity: 0.3;
+}
+
+.matchLink {
+  stroke-width: 3;
+  stroke: green;
+}
+.missmatchLink {
+  stroke-width: 3;
+  stroke: red;
+}
+.emptyLink {
+  stroke-width: 3;
+  stroke: orange;
+}

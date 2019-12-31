@@ -46,3 +46,11 @@ export const Value = ({ char1, char2 }) => (
     {getCost(char1, char2)}
   </span>
 )
+
+export const Solution = ({ word1, word2, onEnter, isSelected }) => (
+  <div onMouseEnter={onEnter} className={isSelected ? classes.isSelected : ""}>
+    {word1.split("").map((_, index) => (
+      <Chars char1={word1[index]} char2={word2[index]} />
+    ))}
+  </div>
+)

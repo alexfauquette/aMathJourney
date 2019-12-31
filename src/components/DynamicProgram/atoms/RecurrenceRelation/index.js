@@ -66,7 +66,7 @@ const RecurrenceRelation = ({
             .map(key => ({
               dx: recurrentValues[key].dx,
               dy: recurrentValues[key].dy,
-              path: [],
+              paths: [],
             })),
         })
       }
