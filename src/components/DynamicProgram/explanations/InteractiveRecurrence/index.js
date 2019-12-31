@@ -10,7 +10,6 @@ import classes from "./styles.module.scss"
 
 import RecurrenceRelation from "src/components/DynamicProgram/atoms/RecurrenceRelation"
 import RecurrenceExplanation from "src/components/DynamicProgram/atoms/RecurrenceExplanation"
-import Links from "src/components/DynamicProgram/atoms/Links"
 
 const InteractiveRecurrence = ({ startWord1, startWord2 }) => {
   const [word1, setWord1] = useState(startWord1)
@@ -18,7 +17,6 @@ const InteractiveRecurrence = ({ startWord1, startWord2 }) => {
   const [subWord1, setSubWord1] = useState(`_${startWord1}`)
   const [subWord2, setSubWord2] = useState(`_${startWord2}`)
   const [values, setValues] = useState({ "_-_": 0 })
-  const [links, setLinks] = useState({})
 
   return (
     <div className={classes.container}>
@@ -46,8 +44,6 @@ const InteractiveRecurrence = ({ startWord1, startWord2 }) => {
             subWord2={subWord2}
             values={values}
             setValues={setValues}
-            links={links}
-            setLinks={setLinks}
             subStep="COMPUTE"
           />
           <InteractiveCircle
@@ -58,7 +54,6 @@ const InteractiveRecurrence = ({ startWord1, startWord2 }) => {
               setSubWord2(sw2)
             }}
           />
-          <Links links={links} />
         </svg>
       </div>
       <div className={classes.explanation}>

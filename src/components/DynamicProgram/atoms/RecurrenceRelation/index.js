@@ -58,16 +58,18 @@ const RecurrenceRelation = ({
       .sort((a, b) => a - b)[0]
     if (typeof values[key] !== "number") {
       setValues({ ...values, [key]: minValue })
-      setLinks({
-        ...links,
-        [key]: Object.keys(recurrentValues)
-          .filter(key => recurrentValues[key].value === minValue)
-          .map(key => ({
-            dx: recurrentValues[key].dx,
-            dy: recurrentValues[key].dy,
-            path: [],
-          })),
-      })
+      if (links && setLinks) {
+        setLinks({
+          ...links,
+          [key]: Object.keys(recurrentValues)
+            .filter(key => recurrentValues[key].value === minValue)
+            .map(key => ({
+              dx: recurrentValues[key].dx,
+              dy: recurrentValues[key].dy,
+              path: [],
+            })),
+        })
+      }
     }
   }
 
