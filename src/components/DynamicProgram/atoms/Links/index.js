@@ -1,14 +1,26 @@
 import React from "react"
-import {
-  COLUMN_SIZE,
-  RECURRENCE_DATA,
-  MEDIUM_CIRCLE_RADIUS,
-  SQRT2,
-  PRESENT,
-  COMPUTE,
-  SAVE,
-} from "../../constants.js"
+import { COLUMN_SIZE, MEDIUM_CIRCLE_RADIUS, SQRT2 } from "../../constants.js"
 import classes from "./styles.module.scss"
+
+export const computeSolutions = (links, state, solutions) => {
+  if (!links[state]) return solutions
+
+  const [subWord1, subWord2] = state.split("-")
+  return links[state].reduce((accumulator, { dx, dy }) => {
+    const sw1 = subWord1.slice(0, subWord1.length + dx)
+    const sw2 = subWord2.slice(0, subWord2.length + dy)
+    const char1 = subWord1.slice(subWord1.length + dx, subWord1.length)
+    const char2 = subWord2.slice(subWord2.length + dy, subWord2.length)
+
+    const newState = `${sw1}-${sw2}`
+    const newSolutions = solutions.map(({ word1, word2 }) => ({
+      word1: `${char1 || "_"}${word1}`,
+      word2: `${char2 || "_"}${word2}`,
+    }))
+
+    return [...accumulator, ...computeSolutions(links, newState, newSolutions)]
+  }, [])
+}
 
 const Links = ({ links }) => {
   return (
@@ -16,7 +28,7 @@ const Links = ({ links }) => {
       {Object.keys(links).reduce((accumulator, key) => {
         return [
           ...accumulator,
-          ...links[key].map(({ dx, dy, state, paths }) => {
+          ...links[key].map(({ dx, dy, paths }) => {
             const [subWord1, subWord2] = key.split("-")
 
             const Dx =
