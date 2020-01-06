@@ -11,10 +11,10 @@ import {
 import classes from "./styles.module.scss"
 
 export const getCost = (char1, char2) => {
-  if (char1 === char2) return 0
-  if (char1 === "_" || char2 === "_") return 1
-  if (char1 === "" || char2 === "") return 1
-  return 2
+  if (char1 === char2) return 1
+  if (char1 === "_" || char2 === "_") return -2
+  if (char1 === "" || char2 === "") return -2
+  return -1
 }
 
 const RecurrenceRelation = ({
@@ -29,7 +29,7 @@ const RecurrenceRelation = ({
   subStep = subStep || PRESENT
   const key = `${subWord1}-${subWord2}`
   let isComputable = false
-  let minValue
+  let maxValue
   const recurrentValues = {}
 
   isComputable = true
@@ -53,16 +53,16 @@ const RecurrenceRelation = ({
     }
   )
   if (isComputable) {
-    minValue = Object.keys(recurrentValues)
+    maxValue = Object.keys(recurrentValues)
       .map(key => recurrentValues[key].value)
-      .sort((a, b) => a - b)[0]
+      .sort((a, b) => b - a)[0]
     if (typeof values[key] !== "number") {
-      setValues({ ...values, [key]: minValue })
+      setValues({ ...values, [key]: maxValue })
       if (links && setLinks) {
         setLinks({
           ...links,
           [key]: Object.keys(recurrentValues)
-            .filter(key => recurrentValues[key].value === minValue)
+            .filter(key => recurrentValues[key].value === maxValue)
             .map(key => ({
               dx: recurrentValues[key].dx,
               dy: recurrentValues[key].dy,
@@ -101,7 +101,7 @@ const RecurrenceRelation = ({
                   : subStep === COMPUTE &&
                     isComputable &&
                     recurrentValues[index] &&
-                    recurrentValues[index].value === minValue
+                    recurrentValues[index].value === maxValue
                   ? classes.goodLink
                   : subStep === COMPUTE && isComputable
                   ? classes.badLink
@@ -123,7 +123,7 @@ const RecurrenceRelation = ({
                 : subStep === COMPUTE &&
                   isComputable &&
                   recurrentValues[index] &&
-                  recurrentValues[index].value === minValue
+                  recurrentValues[index].value === maxValue
                 ? classes.goodCircle
                 : RECURRENCE_DATA.length === index + 1
                 ? classes.resultCircle

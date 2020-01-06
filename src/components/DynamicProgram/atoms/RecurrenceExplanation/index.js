@@ -73,7 +73,7 @@ const RecurrenceExplanation = ({ subWord1, subWord2, values, subStep }) => {
       ) : (
         <div className={classes.recurrenceShowBlock}>
           <Score value={values[`${subWord1}-${subWord2}`]} />=
-          {subSolutions.length > 1 ? " min " : ""}
+          {subSolutions.length > 1 ? " max " : ""}
           <div
             className={`${classes.solutionsContainer}
               ${subSolutions.length > 1 ? classes.leftBar : ""}`}
