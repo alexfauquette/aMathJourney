@@ -36,7 +36,7 @@ const RecurrenceExplanation = ({ subWord1, subWord2, values, subStep }) => {
   )
 
   return (
-    <div>
+    <div className={classes.container}>
       {/* SHOW */}
       <div className={classes.recurrenceShowBlock}>
         <Words word1={subWord1} word2={subWord2} /> =

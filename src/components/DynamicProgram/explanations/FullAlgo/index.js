@@ -16,6 +16,8 @@ import Links, {
   fillLinksWithPaths,
 } from "src/components/DynamicProgram/atoms/Links"
 
+const MAX_NUMBER_OF_SOLUTION_TO_DISPLAY = 10
+
 const nextHorizontal = (subWord1, subWord2, word1, word2) => {
   if (subWord1.length < word1.length + 1)
     return { subWord1: `_${word1.slice(0, subWord1.length)}`, subWord2 }
@@ -116,6 +118,7 @@ const FullAlgo = ({ startWord1, startWord2 }) => {
               solutions={solutions}
               selectedSolution={selectedSolution}
               setSelectedSolution={setSelectedSolution}
+              MAX_NUMBER_TO_DISPLAY={MAX_NUMBER_OF_SOLUTION_TO_DISPLAY}
             />
           ) : (
             <RecurrenceExplanation

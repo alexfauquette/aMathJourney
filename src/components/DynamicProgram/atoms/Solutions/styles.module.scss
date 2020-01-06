@@ -40,20 +40,20 @@
   background-color: green;
 }
 .withEmpty {
-  background-color: orange;
+  background-color: red;
 }
 .mismatch {
-  background-color: red;
+  background-color: orange;
 }
 
 .matchValue {
   color: green;
 }
 .withEmptyValue {
-  color: orange;
+  color: red;
 }
 .mismatchValue {
-  color: red;
+  color: orange;
 }
 
 .score {
@@ -68,4 +68,7 @@
   padding: 4px;
   border-radius: 4px;
   border: solid blue 1px;
+}
+.solutionContainer {
+  display: flex;
 }

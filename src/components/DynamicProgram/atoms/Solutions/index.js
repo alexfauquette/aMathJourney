@@ -17,7 +17,7 @@ export const Chars = ({ char1, char2 }) => (
     className={`${classes.charsContainer} ${
       char1 === char2
         ? classes.match
-        : !char1 || !char2
+        : !char1 || !char2 || char1 === "_" || char2 === "_"
         ? classes.withEmpty
         : classes.mismatch
     }`}
@@ -38,7 +38,7 @@ export const Value = ({ char1, char2 }) => (
     className={`${
       char1 === char2
         ? classes.matchValue
-        : !char1 || !char2
+        : !char1 || !char2 || char1 === "_" || char2 === "_"
         ? classes.withEmptyValue
         : classes.mismatchValue
     }`}
@@ -48,7 +48,12 @@ export const Value = ({ char1, char2 }) => (
 )
 
 export const Solution = ({ word1, word2, onEnter, isSelected }) => (
-  <div onMouseEnter={onEnter} className={isSelected ? classes.isSelected : ""}>
+  <div
+    onMouseEnter={onEnter}
+    className={`${classes.solutionContainer} ${
+      isSelected ? classes.isSelected : ""
+    }`}
+  >
     {word1.split("").map((_, index) => (
       <Chars char1={word1[index]} char2={word2[index]} />
     ))}
