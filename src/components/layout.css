@@ -847,7 +847,8 @@ svg {
   display: inline-block;
 }
 
-ol {
+ol,
+ul {
   text-align: left;
 }
 
