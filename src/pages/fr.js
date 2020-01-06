@@ -15,6 +15,11 @@ const IndexPage = () => (
       de Go, et bientôt Dota. Dans cet article, on va retourner à l'age de
       pierre de l'IA pour jouer au morpion."
     />
+    <ArticleCard
+      articleLocation="/dynamic-programming/fr"
+      title="Aligner des séquences génétiques"
+      description="Tester toutes les possibilités comme pour résoudre le morpion, ça à ses limites. On va voire comment limiter le temps de calcule en utilisant un peu de mémoire grace à la programmation dynamique"
+    />
   </Layout>
 )
 
