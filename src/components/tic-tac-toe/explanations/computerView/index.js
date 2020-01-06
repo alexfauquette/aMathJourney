@@ -165,7 +165,7 @@ class PlayableComputerView extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
         <svg viewBox="0 0 200 200" style={{ height: "300px", width: "300px" }}>
           <Board
             width={200}
@@ -253,7 +253,7 @@ class PlayableComputerView extends React.Component {
             <button onClick={this.reset()}>RESET</button>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }

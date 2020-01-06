@@ -119,7 +119,7 @@ class PlayableIntro extends React.Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <div>
         <svg viewBox="0 0 200 200" style={{ height: "300px", width: "300px" }}>
           <Board
             width={200}
@@ -155,7 +155,7 @@ class PlayableIntro extends React.Component {
             <button onClick={this.reset()}>RESET</button>
           </div>
         </div>{" "}
-      </React.Fragment>
+      </div>
     )
   }
 }
