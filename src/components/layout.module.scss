@@ -24,6 +24,7 @@ $topBottomPadding: 64px;
   background-color: white;
   padding: $topBottomPadding $leftRightPadding;
   max-width: $articleWidth;
+  text-align: left;
 }
 .aboutContainer {
   width: $bioSize;
