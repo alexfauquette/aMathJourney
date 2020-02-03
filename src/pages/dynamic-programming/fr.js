@@ -48,7 +48,7 @@ const Page = () => {
     setOpenFullTree(false)
   }
   return (
-    <Layout location="/tic-tac-toe" currentLanguage="Français">
+    <Layout location="/dynamic-programming" currentLanguage="Français">
       <SEO title="Morpion" />
 
       <p>
