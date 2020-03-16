@@ -1,0 +1,36 @@
+.params {
+  display: flex;
+  flex-flow: row wrap;
+  label {
+    display: block;
+  }
+  input {
+    width: 5rem;
+  }
+}
+.societyParams {
+  label,
+  p {
+    color: blue;
+  }
+}
+.virusParams {
+  label,
+  p {
+    color: red;
+  }
+}
+
+.societyParams,
+.virusParams,
+.initialParams {
+  flex-grow: 1;
+  padding: 1rem;
+  ul {
+    list-style: none;
+  }
+}
+
+.R0 {
+  text-align: center;
+}

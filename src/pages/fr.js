@@ -20,6 +20,11 @@ const IndexPage = () => (
       title="Aligner des séquences génétiques"
       description="Tester toutes les possibilités comme pour résoudre le morpion, ça à ses limites. On va voire comment limiter le temps de calcule en utilisant un peu de mémoire grace à la programmation dynamique"
     />
+    <ArticleCard
+      articleLocation="/virus/fr"
+      title="Dynamique d'une épidémie"
+      description="Envie de parler d'un sujet réjouissant ? Venez voir comment modéliser la propagation d'une épidémie :)"
+    />
   </Layout>
 )
 
