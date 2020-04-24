@@ -11,18 +11,7 @@ import { IRDplot } from "src/components/virus/IRD"
 import { SIRDplot } from "src/components/virus/SIRD"
 
 import classes from "./style.module.scss"
-{
-  /* <div>
-        <MathJax.Context>
-        <MathJax.Node inline>{"ascii"}</MathJax.Node>
-        </MathJax.Context>
-          <div>
-            This is an inline formula written in AsciiMath:{" "}
-            <MathJax.Node inline>{"ascii"}</MathJax.Node>
-          </div>
-        </MathJax.Context>
-      </div> */
-}
+
 const Page = () => {
   // deal with page state
 

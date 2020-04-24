@@ -21,7 +21,7 @@ const Header = ({
         style={{ float: "right" }}
       />
     </div>
-    <ol className={classes.menu}>
+    {/* <ol className={classes.menu}>
       <li>
         <Link
           to={`/about/${languages[currentLanguage]}`}
@@ -35,7 +35,7 @@ const Header = ({
           Home
         </Link>
       </li>
-    </ol>
+    </ol> */}
   </header>
 )
 

@@ -12,14 +12,14 @@ import PropTypes from "prop-types"
 import Header from "./Header"
 import "./layout.css"
 import classes from "./layout.module.scss"
-import { default as AboutEn } from "src/components/About/en"
-import { default as AboutFr } from "src/components/About/fr"
+// import { default as AboutEn } from "src/components/About/en"
+// import { default as AboutFr } from "src/components/About/fr"
 
 const Layout = ({
   children,
   location,
   currentLanguage = "English",
-  showAbout = false,
+  // showAbout = false,
 }) => (
   <div className={classes.root}>
     <Header
@@ -28,11 +28,11 @@ const Layout = ({
     />
     <main className={classes.main}>
       <article className={classes.article}>{children}</article>
-      {showAbout ? (
+      {/* {showAbout ? (
         <div className={classes.aboutContainer}>
           {currentLanguage === "Français" ? <AboutFr /> : <AboutEn />}
         </div>
-      ) : null}
+      ) : null} */}
     </main>
     <footer>
       © {new Date().getFullYear()}, Built with
