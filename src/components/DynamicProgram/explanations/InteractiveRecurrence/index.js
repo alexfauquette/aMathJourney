@@ -11,7 +11,7 @@ import classes from "./styles.module.scss"
 import RecurrenceRelation from "src/components/DynamicProgram/atoms/RecurrenceRelation"
 import RecurrenceExplanation from "src/components/DynamicProgram/atoms/RecurrenceExplanation"
 
-const InteractiveRecurrence = ({ startWord1, startWord2 }) => {
+const InteractiveRecurrence = ({ startWord1, startWord2, lang }) => {
   const [word1, setWord1] = useState(startWord1)
   const [word2, setWord2] = useState(startWord2)
   const [subWord1, setSubWord1] = useState(`_${startWord1}`)
@@ -61,6 +61,7 @@ const InteractiveRecurrence = ({ startWord1, startWord2 }) => {
           subWord1={subWord1}
           subWord2={subWord2}
           values={values}
+          lang={lang}
         />
       </div>
     </div>

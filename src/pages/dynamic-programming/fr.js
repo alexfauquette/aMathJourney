@@ -369,7 +369,7 @@ const Page = () => {
         voir à quel <strong>sous-problème</strong> correspond cette case.
       </p>
 
-      <InteractiveGrid startWord1="ABCDEFGHIJ" startWord2="DEFGH" />
+      <InteractiveGrid startWord1="ABCDEFGHIJ" startWord2="DEFGH" lang="fr" />
 
       <h2>Relation de récurrence nouvelle version</h2>
       <p>
@@ -398,7 +398,11 @@ const Page = () => {
         d'appliquer la relation. Si toutes les informations sont présentes, la
         relation de récurrence sera calculée.
       </p>
-      <InteractiveRecurrence startWord1="ATCGTCGA" startWord2="AGGTGCGTA" />
+      <InteractiveRecurrence
+        startWord1="ATCGTCGA"
+        startWord2="AGGTGCGTA"
+        lang="fr"
+      />
       <p>
         Vous avez sans doute remarqué, que pour calculer un score, il faut en
         connaître déjà 3. Celui situé en <strong>haut</strong>, celui à{" "}
@@ -441,7 +445,7 @@ const Page = () => {
         effet, il n'y a pas forcément un seul alignement optimal, il peut y en
         avoir plusieurs. Et cet algorithm les donne tous.
       </p>
-      <FullAlgo startWord1="ACGTCATC" startWord2="ATGCGGC" />
+      <FullAlgo startWord1="ACGTCATC" startWord2="ATGCGGC" lang="fr" />
     </Layout>
   )
 }

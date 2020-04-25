@@ -16,6 +16,8 @@ import Links, {
   fillLinksWithPaths,
 } from "src/components/DynamicProgram/atoms/Links"
 
+import withTranslation from "../../translation"
+
 const MAX_NUMBER_OF_SOLUTION_TO_DISPLAY = 10
 
 const nextHorizontal = (subWord1, subWord2, word1, word2) => {
@@ -33,7 +35,7 @@ const nextVertical = (subWord1, subWord2, word1, word2) => {
   return null
 }
 
-const FullAlgo = ({ startWord1, startWord2 }) => {
+const FullAlgo = ({ startWord1, startWord2, translation, lang }) => {
   const [word1, setWord1] = useState(startWord1)
   const [word2, setWord2] = useState(startWord2)
   const [subWord1, setSubWord1] = useState(`_`)
@@ -125,13 +127,14 @@ const FullAlgo = ({ startWord1, startWord2 }) => {
               subWord1={subWord1}
               subWord2={subWord2}
               values={values}
+              lang={lang}
             />
           )}
         </div>
       </div>
-      <button onClick={next}>Next</button>
+      <button onClick={next}>{translation.next}</button>
     </>
   )
 }
 
-export default FullAlgo
+export default withTranslation(FullAlgo)

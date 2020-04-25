@@ -9,7 +9,15 @@ import {
 } from "src/components/DynamicProgram/atoms/Solutions"
 import { getCost } from "../RecurrenceRelation"
 
-const RecurrenceExplanation = ({ subWord1, subWord2, values, subStep }) => {
+import withTranslation from "../../translation"
+
+const RecurrenceExplanation = ({
+  subWord1,
+  subWord2,
+  values,
+  subStep,
+  translation,
+}) => {
   subStep = subStep || PRESENT
 
   const key = `${subWord1}-${subWord2}`
@@ -59,14 +67,15 @@ const RecurrenceExplanation = ({ subWord1, subWord2, values, subStep }) => {
       {computationProblem ? (
         <>
           <p>
-            We don't know the minimal cost of{" "}
+            {translation.we_dont_know}
+
             <Words
               word1={computationProblem.subSolution1}
               word2={computationProblem.subSolution2}
             />
           </p>
           <p>
-            You need it to compute the minimal cost of{" "}
+            {translation.we_need}
             <Words word1={subWord1} word2={subWord2} />
           </p>
         </>
@@ -101,4 +110,4 @@ const RecurrenceExplanation = ({ subWord1, subWord2, values, subStep }) => {
     </div>
   )
 }
-export default RecurrenceExplanation
+export default withTranslation(RecurrenceExplanation)
