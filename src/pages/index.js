@@ -15,6 +15,11 @@ const IndexPage = () => (
       consider the simple game of tic-tac-toe and solve it with technics coming
       from the stone age of AI."
     />
+    <ArticleCard
+      articleLocation="/dynamic-programming/"
+      title="Align DNA"
+      description="Improve your complexity with dynamic programming"
+    />
   </Layout>
 )
 

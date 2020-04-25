@@ -9,7 +9,7 @@ const translation = {
   en: {
     next: "Next",
     we_dont_know: "We don't know the minimal cost of ",
-    we_need: "You before need it to compute the minimal cost of ",
+    we_need: "You need before to compute the minimal cost of ",
   },
 }
 const withTranslation = PassedComponent => ({ lang, ...props }) => (

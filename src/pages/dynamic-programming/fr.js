@@ -7,6 +7,9 @@ import SEO from "src/components/seo"
 import InteractiveGrid from "src/components/DynamicProgram/explanations/InteractiveGrid"
 import InteractiveRecurrence from "src/components/DynamicProgram/explanations/InteractiveRecurrence"
 import FullAlgo from "src/components/DynamicProgram/explanations/FullAlgo"
+
+import { Match, MissMatch, Deletion } from "src/components/DynamicProgram/utils"
+
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
@@ -26,16 +29,6 @@ import recurrence_tableau from "./images/recurrence_tableau.png"
 import parcourt_tableau from "./images/parcourt_tableau.png"
 
 import classes from "./style.module.scss"
-
-const Match = ({ children }) => (
-  <strong style={{ color: "green" }}>{children}</strong>
-)
-const MissMatch = ({ children }) => (
-  <strong style={{ color: "orange" }}>{children}</strong>
-)
-const Deletion = ({ children }) => (
-  <strong style={{ color: "red" }}>{children}</strong>
-)
 
 const Page = () => {
   const [openFullTree, setOpenFullTree] = useState(false)
@@ -82,13 +75,12 @@ const Page = () => {
           Acide DésoxyriboNucléique (ADN)
         </a>
         . Mais cette information n'est pas écrite en français, ni même en
-        allemand. Cette molécule est composé de 4 bloques de bases que
-        s'assemblent les uns à la suites des autres. On peut donc dérouler un
-        des deux brins d'ADN. Ce qui nous donne une chaîne composée de nos 4
-        motifs. On va alors noter par des lettres l'ordre d'apparition de ces
-        motifs. On obtient donc une langue composée uniquement de{" "}
-        <strong>4 symboles</strong> que l'on notera <strong>A</strong>,{" "}
-        <strong>C</strong>, <strong>G</strong>, <strong>T</strong>.
+        allemand. Cette molécule est composé de 4 bloques de bases qui
+        s'assemblent les uns à la suites des autres. On utilise des lettres pour
+        noter l'ordre d'apparition de ces motifs. On obtient alors un mot
+        composé uniquement de <strong>4 symboles</strong> notés{" "}
+        <strong>A</strong>, <strong>C</strong>, <strong>G</strong>,{" "}
+        <strong>T</strong>.
       </p>
       <p>
         Voici un petit dessin pour résumer la simplification de notre
