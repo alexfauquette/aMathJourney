@@ -3,6 +3,9 @@ import Board from "src/components/tic-tac-toe/atoms/Board"
 import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/LinkVertical"
 import { completTree as tree } from "src/components/tic-tac-toe/explanations/utils"
+
+import translate from "../../translation"
+
 const game = new Game()
 
 class RecurrenceExample extends React.Component {
@@ -79,6 +82,8 @@ class RecurrenceExample extends React.Component {
     const maxWidth = 100
     const childWidth = Math.min(maxWidth, paritalWidth / (maxChildren + 3))
 
+    const translation = translate[this.props.lang || "en"]
+
     return (
       <>
         <svg viewBox={`0 0 ${totalWidth} 300`} style={{ width: "100%" }}>
@@ -146,7 +151,7 @@ class RecurrenceExample extends React.Component {
             </React.Fragment>
           ))}
         </svg>
-        <button onClick={this.reset()}>RESET</button>
+        <button onClick={this.reset()}>{translation.reset}</button>
       </>
     )
   }

@@ -23,7 +23,7 @@ const Page = () => (
       Pour faire fonctionner les animations, merci d'activer votre javscript.
     </noscript>
 
-    <CompletTree robot={1} />
+    <CompletTree robot={1} lang="fr" />
   </Layout>
 )
 

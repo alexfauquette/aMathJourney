@@ -40,7 +40,7 @@ const Page = () => (
       et le deuxième les ronds.
     </p>
 
-    <PlayableIntro />
+    <PlayableIntro lang="fr" />
 
     <h2>Comment votre ordinateur voit le monde.</h2>
 
@@ -53,7 +53,7 @@ const Page = () => (
       que vous choisissiez une case pour faire avancer le jeu.
     </p>
 
-    <History />
+    <History lang="fr" />
 
     <p>
       Jusque-là pas grand-chose de spécial. Une partie de morpion c'est une
@@ -66,7 +66,7 @@ const Page = () => (
       imaginables.
     </p>
 
-    <TreeIntro />
+    <TreeIntro lang="fr" />
 
     <p>
       Et voila, un magnifique arbre, avec à gauche sa racine d'où partent toutes
@@ -140,7 +140,7 @@ const Page = () => (
       </span>
     </p>
 
-    <ComputerView />
+    <ComputerView lang="fr" />
 
     <h2>Comment savoir si une grille est gagnante?</h2>
     <p>
@@ -187,7 +187,7 @@ const Page = () => (
       gagnante pour <span style={{ color: "red" }}>O</span>.
     </p>
 
-    <RecurrenceExample />
+    <RecurrenceExample lang="fr" />
 
     <p>
       La façon la plus simple de calculer qui va gagner est d'appliquer les
@@ -221,7 +221,7 @@ const Page = () => (
       Pas convaincu ? En appuyant sur next, faite défiler l'algorithme étape par
       étape.
     </p>
-    <TreeSearch />
+    <TreeSearch lang="fr" />
 
     <h2>Et le résultat est ...</h2>
     <p>
@@ -230,22 +230,21 @@ const Page = () => (
       les deux joueurs sont parfait. Pour le prouver, le plus simple serait
       d'afficher tout l'arbre. Ca serait un peu compliqué à lire. On propose
       donc de prouver que le premier joueur à une stratégie pour obtenir{" "}
-      <span style={{ color: "orange" }}>nul</span>
-      quoi que fasse le deuxième joueur. Puis de faire la même chose pour le
-      deuxième joueur. Comme le premier joueur à une stratégie pour faire match
-      nul, les deuxième joueur ne peut pas avoir de stratégie gagnante, et
-      inversement.
+      <span style={{ color: "orange" }}>nul</span> quoi que fasse le deuxième
+      joueur. Puis de faire la même chose pour le deuxième joueur. Comme le
+      premier joueur à une stratégie pour faire match nul, les deuxième joueur
+      ne peut pas avoir de stratégie gagnante, et inversement.
     </p>
     <p>
       Ci-dessous, l'arbre pour le premier joueur. Quand c'est à lui de jouer, on
       affiche une seule action. Cette action est celle de sa stratégie. Quand
       c'est le tour du deuxième joueur, on affiche toutes les possibilités, pour
       être sur que quoi qu'il fasse, le premier joueur aura moyen d'obtenir au
-      moins un match nul.
+      moins un match <span style={{ color: "orange" }}>nul</span>.
     </p>
     <p>Astuce: cliquez sur les grilles pour réduire l'arbre.</p>
 
-    <CompletTree robot={0} />
+    <CompletTree robot={0} lang="fr" />
 
     <p>
       Pourquoi commencer par premier joueur ? Parce que c'est l'arbre le plus

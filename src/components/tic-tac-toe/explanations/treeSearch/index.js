@@ -4,6 +4,8 @@ import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/Link"
 import { treeToPosition } from "src/components/tic-tac-toe/explanations/utils"
 
+import translate from "../../translation"
+
 const game = new Game()
 
 class TreeSearch extends React.Component {
@@ -220,18 +222,18 @@ class TreeSearch extends React.Component {
     }
   }
 
-  traduction() {
+  traduction(translation) {
     switch (this.state.algoState) {
       case 0:
-        return "Let see who are the child of this element"
+        return translation.case0
       case 1:
-        return "Let start by studying its first cild"
+        return translation.case1
 
       case 2:
-        return "We know the result for this chid, lets continue"
+        return translation.case2
 
       case 3:
-        return "All child are computed, we can get the winner of the current grid"
+        return translation.case3
 
       case 4:
         const player = game.getPlayer(this.state.tree[this.state.stateId].grid)
@@ -244,30 +246,35 @@ class TreeSearch extends React.Component {
         ]
         const computation =
           winning > 0
-            ? `In those actions, there ${
-                winning > 1 ? "are" : "is"
-              } ${winning} wininning position${winning > 1 ? "s" : ""}`
+            ? `${translation.case4.winningIntro} ${
+                winning > 1 ? translation.are : translation.is
+              } ${winning} ${
+                winning > 1
+                  ? translation.case4.winnings
+                  : translation.case4.winning
+              }`
             : nulle > 0
-            ? `In those actions, there is no winning one but ${nulle} ${
-                nulle > 1 ? "are" : "is"
-              } null position${nulle > 1 ? "s" : ""}`
-            : `In those actions, there is only losing losing one`
+            ? `${translation.case4.nullIntro} ${nulle} ${
+                nulle > 1 ? translation.are : translation.is
+              } ${nulle > 1 ? translation.case4.nulls : translation.case4.null}`
+            : translation.case4.loosing
         return (
           <>
             <p>
-              For this grid, the player{" "}
-              <span className={"player-" + player}>{player}</span> has{" "}
-              {childrenWinner.length} possible actions.
+              {translation.case4.intro}
+              <span className={"player-" + player}>{player}</span>{" "}
+              {`${translation.has} `}
+              {childrenWinner.length} {translation.case4.possibleActions}
             </p>
             <p>{computation}</p>
           </>
         )
 
       case 5:
-        return "There is a unknown child, let's comput its result"
+        return translation.case5
 
       case 6:
-        return "You tested all the possibilities"
+        return translation.case6
 
       default:
         break
@@ -283,6 +290,8 @@ class TreeSearch extends React.Component {
     }
   }
   render() {
+    const translation = translate[this.props.lang || "en"]
+
     const SIZE = 75
     const treePositions = treeToPosition(this.state.tree)
     const height = treePositions.reduce((t, x) => Math.max(t, x.y), 0)
@@ -295,7 +304,7 @@ class TreeSearch extends React.Component {
         }}
         tabIndex="0"
       >
-        <button onClick={this.next()}>next</button>
+        <button onClick={this.next()}>{translation.next}</button>
 
         <div
           className={`${
@@ -341,7 +350,7 @@ class TreeSearch extends React.Component {
           className="robot-speak"
         >
           <p>
-            {this.traduction()} <span className="cursor">O</span>
+            {this.traduction(translation)} <span className="cursor">O</span>
           </p>
         </div>
         {100 * (height + 1) > 500 && (
@@ -349,7 +358,9 @@ class TreeSearch extends React.Component {
             onClick={this.toogleHeightLimited()}
             className="treeExtension"
           >
-            {this.state.heightLimited ? "Extand" : "Retract"}
+            {this.state.heightLimited
+              ? translation.extend
+              : translation.retract}
           </button>
         )}
       </div>

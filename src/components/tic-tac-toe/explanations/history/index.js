@@ -3,6 +3,8 @@ import Board from "src/components/tic-tac-toe/atoms/Board"
 import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/Link"
 
+import translate from "../../translation"
+
 const game = new Game()
 
 class History extends React.Component {
@@ -37,6 +39,8 @@ class History extends React.Component {
   }
 
   render() {
+    const translation = translate[this.props.lang || "en"]
+
     return (
       <>
         <svg viewBox="0 0 1000 100" style={{ height: "100px", width: "100%" }}>
@@ -65,7 +69,7 @@ class History extends React.Component {
             </React.Fragment>
           ))}
         </svg>
-        <button onClick={this.reset()}>RESET</button>
+        <button onClick={this.reset()}>{translation.reset}</button>
       </>
     )
   }

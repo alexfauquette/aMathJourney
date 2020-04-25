@@ -8,6 +8,8 @@ import { perfectPlayer } from "src/components/tic-tac-toe/explanations/utils"
 import human from "../../images/human.svg"
 import robot from "../../images/robot.svg"
 
+import translate from "../../translation"
+
 const game = new Game()
 const DELAY = 2000
 
@@ -164,6 +166,7 @@ class PlayableComputerView extends React.Component {
   }
 
   render() {
+    const translation = translate[this.props.lang || "en"]
     return (
       <div>
         <svg viewBox="0 0 200 200" style={{ height: "300px", width: "300px" }}>
@@ -186,7 +189,7 @@ class PlayableComputerView extends React.Component {
         </svg>
         <div className="settings">
           <div className="horizontal-selection">
-            <p>First player : </p>
+            <p>{translation.first_player}</p>
             <div
               className={`button-left ${
                 this.state.robot.includes(0) ? "selected" : "unselected"
@@ -206,7 +209,7 @@ class PlayableComputerView extends React.Component {
           </div>
 
           <div className="horizontal-selection">
-            <p>Second player : </p>
+            <p>{translation.second_player}</p>
             <div
               className={`button-left ${
                 this.state.robot.includes(1) ? "selected" : "unselected"
@@ -226,7 +229,7 @@ class PlayableComputerView extends React.Component {
           </div>
 
           <div className="horizontal-selection">
-            <p>Show solutions for : </p>
+            <p>{translation.show_solution}</p>
             <div
               className={`button-left ${
                 this.state.showRobot
@@ -250,7 +253,7 @@ class PlayableComputerView extends React.Component {
           </div>
 
           <div className="horizontal-selection">
-            <button onClick={this.reset()}>RESET</button>
+            <button onClick={this.reset()}>{translation.reset}</button>
           </div>
         </div>
       </div>

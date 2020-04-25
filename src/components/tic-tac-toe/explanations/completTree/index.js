@@ -7,6 +7,7 @@ import {
   feelSolutions,
   reduceToOpimalTree,
 } from "src/components/tic-tac-toe/explanations/utils"
+import translate from "../../translation"
 
 const game = new Game()
 
@@ -61,6 +62,7 @@ class CompletTree extends React.Component {
   }
 
   render() {
+    const translation = translate[this.props.lang || "en"]
     const SIZE = 75
     const treePositions = treeToPosition(this.state.tree)
     const height = treePositions.reduce((t, x) => Math.max(t, x.y), 0)
@@ -108,7 +110,7 @@ class CompletTree extends React.Component {
             {this.state.heightLimited ? "Extend" : "Retract"}
           </button>
         )}
-        <button onClick={this.reset()}>RESET</button>
+        <button onClick={this.reset()}>{translation["reset"]}</button>
       </>
     )
   }

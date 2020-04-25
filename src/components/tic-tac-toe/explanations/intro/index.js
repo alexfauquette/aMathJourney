@@ -6,6 +6,8 @@ import { perfectPlayer } from "src/components/tic-tac-toe/explanations/utils"
 import human from "../../images/human.svg"
 import robot from "../../images/robot.svg"
 
+import translate from "../../translation"
+
 const game = new Game()
 
 const DELAY = 500
@@ -118,6 +120,7 @@ class PlayableIntro extends React.Component {
     }
   }
   render() {
+    const translation = translate[this.props.lang || "en"]
     return (
       <div>
         <svg viewBox="0 0 200 200" style={{ height: "300px", width: "300px" }}>
@@ -133,7 +136,7 @@ class PlayableIntro extends React.Component {
         </svg>
         <div className="settings">
           <div className="horizontal-selection">
-            <p>First player : </p>
+            <p>{translation.first_player}</p>
             <div
               className={`button-left ${
                 this.state.robot[0] === 0 ? "selected" : "unselected"
@@ -152,7 +155,7 @@ class PlayableIntro extends React.Component {
             </div>
           </div>
           <div className="horizontal-selection">
-            <button onClick={this.reset()}>RESET</button>
+            <button onClick={this.reset()}>{translation.reset}</button>
           </div>
         </div>{" "}
       </div>

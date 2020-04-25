@@ -4,6 +4,8 @@ import Game from "src/components/tic-tac-toe/explanations/utils/game"
 import Link from "src/components/tic-tac-toe/atoms/Link"
 import { treeToPosition } from "src/components/tic-tac-toe/explanations/utils"
 
+import translate from "../../translation"
+
 const game = new Game()
 
 class IntroTree extends React.Component {
@@ -69,6 +71,7 @@ class IntroTree extends React.Component {
   }
 
   render() {
+    const translation = translate[this.props.lang || "en"]
     const SIZE = 75
     return (
       <>
@@ -109,7 +112,7 @@ class IntroTree extends React.Component {
             ))}
           </svg>
         </div>
-        <button onClick={this.reset()}>RESET</button>
+        <button onClick={this.reset()}>{translation.reset}</button>
       </>
     )
   }

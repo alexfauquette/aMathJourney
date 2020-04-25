@@ -19,7 +19,7 @@ const Page = () => (
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
-    <CompletTree robot={1} />
+    <CompletTree robot={1} lang="en" />
   </Layout>
 )
 

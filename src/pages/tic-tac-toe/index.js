@@ -228,7 +228,7 @@ const SecondPage = () => (
       clicking on it.
     </p>
 
-    <CompletTree robot={0} />
+    <CompletTree robot={0} lang="en" />
 
     <p>
       Why choosing Player one for the computer ? Because it is the smallest
