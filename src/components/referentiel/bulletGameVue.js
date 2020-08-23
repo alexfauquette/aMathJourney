@@ -2,7 +2,7 @@ import React from "react"
 import classes from "./BulletGame.module.scss"
 
 const BulletGameVue = ({ coords, referentiel }) => (
-  <svg version="1.1" viewBox="0 0 200 100" className={classes.svgImage}>
+  <svg version="1.1" viewBox="0 0 300 100" className={classes.svgImage}>
     <defs id="defs2">
       <marker
         style={{ overflow: "visible" }}
@@ -45,7 +45,7 @@ const BulletGameVue = ({ coords, referentiel }) => (
           coords[referentiel]["x"]}px, ${coords["floor"]["y"] -
           coords[referentiel]["y"]}px)`,
       }}
-      d="M -66.145833,66.145833 H 336.02083"
+      d="M -66.145833,66.145833 H 500.02083"
       id="path12"
     />
     <g

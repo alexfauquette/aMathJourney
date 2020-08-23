@@ -28,7 +28,7 @@ const BulletGame = () => {
   const [pause, setPause] = useState(true)
   const [coords, setCoords] = useState(getCoord(0))
 
-  const [referentiel, setReferentiel] = useState("perso")
+  const [referentiel, setReferentiel] = useState("bullet")
 
   useEffect(() => {
     if (time < END_TIME && time >= 0 && !pause) {
