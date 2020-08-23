@@ -11,30 +11,31 @@
 .container {
   display: flex;
 
-  .clientHeader {
-    height: 2rem;
-    padding: 0.5rem 0.1rem;
-    background-color: lightcyan;
-    margin: 0 0 0.5rem 0;
-    div {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 1rem;
-      background-color: white;
-      display: inline-block;
-      text-align: center;
-      vertical-align: middle;
-      margin: 0 0.5rem;
-      span {
-        vertical-align: sub;
-      }
-    }
-  }
-
-  .messages {
-    max-height: 15rem;
+  .dialogue {
+    max-height: 18rem;
     width: 100%;
     overflow: auto;
+
+    .clientHeader {
+      height: 2rem;
+      padding: 0.5rem 0.1rem;
+      background-color: lightcyan;
+      margin: 0 0 0.5rem 0;
+      div {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 1rem;
+        background-color: white;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        margin: 0 0.5rem;
+        span {
+          vertical-align: sub;
+        }
+      }
+    }
+
     .message {
       animation-name: fade-in;
       animation-delay: 0s;
@@ -42,14 +43,13 @@
       background-color: lightcyan;
       padding: 12px;
       border-radius: 4px 18px 18px 4px;
+      margin: 0 18px 2px 2px;
       &:first-child {
         border-radius: 18px 18px 18px 4px;
       }
       &:last-child {
         border-radius: 4px 18px 18px 18px;
       }
-
-      margin: 0 18px 2px 2px;
 
       .origine {
         color: red;

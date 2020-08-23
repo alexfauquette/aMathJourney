@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react"
-
-import classes from "./gridGame.module.scss"
+import React, { useState } from "react"
 
 import GridView from "src/components/referentiel/gridView.js"
+import classes from "./gridGame.module.scss"
 
 const client1Reaction = (line, column, alreadyTested) => {
   if (line > 1) {
@@ -14,7 +13,7 @@ const client1Reaction = (line, column, alreadyTested) => {
 
   //since it is in the good corner, we add logic to avoid lucky try
   const testedTopRight = alreadyTested.filter(
-    x => x["line"] <= 1 && x["column"] >= 3
+    (x) => x["line"] <= 1 && x["column"] >= 3
   )
   if (testedTopRight.length === 0) {
     return [line === 0 ? "plus bas" : "plus haut", false]
@@ -79,8 +78,8 @@ const GridGame = () => {
     }
 
     if (
-      alreadyTested.filter(x => x.line === line && x.column === column).length >
-      0
+      alreadyTested.filter((x) => x.line === line && x.column === column)
+        .length > 0
     ) {
       setClientMessage([...clientMessage, "Ta m'a déjà proposé ça :@"])
     } else {
@@ -145,7 +144,7 @@ const GridGame = () => {
     <>
       <div className={classes.container}>
         <GridView action={action} alreadyTested={alreadyTested} />
-        <div>
+        <div className={classes.dialogue}>
           <p className={classes.clientHeader}>
             <div>
               {currentClient === 1 && (
@@ -166,7 +165,7 @@ const GridGame = () => {
             </div>
             {currentClient < 3 ? `Client ${currentClient}` : "Responsable"}
           </p>
-          <div className={classes.messages}>
+          <div className={classes.messageContainer}>
             {clientMessage &&
               [...clientMessage].reverse().map((message, id) => (
                 <p className={classes.message} key={clientMessage.length - id}>
