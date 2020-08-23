@@ -3,26 +3,36 @@ $minSideMargin: 8px;
 $bioSize: 300px;
 $leftRightPadding: 32px;
 $topBottomPadding: 64px;
+$smallLeftRightPadding: 8px;
+$smallTopBottomPadding: 32px;
+$break-point: 450px;
 
 .root {
   footer {
     background-color: gray;
     color: white;
     padding: $minSideMargin 0;
-    margin-top: $topBottomPadding;
     width: 100%;
+    @media (min-width: $break-point) {
+      margin-top: $topBottomPadding;
+    }
   }
 }
 
 .main {
   display: flex;
   justify-content: center;
-  padding: $minSideMargin;
+  @media (min-width: $break-point) {
+    padding: $minSideMargin;
+  }
 }
 
 .article {
   background-color: white;
-  padding: $topBottomPadding $leftRightPadding;
+  padding: $smallTopBottomPadding $smallLeftRightPadding;
+  @media (min-width: $break-point) {
+    padding: $topBottomPadding $leftRightPadding;
+  }
   max-width: $articleWidth;
   width: 100%;
   text-align: left;

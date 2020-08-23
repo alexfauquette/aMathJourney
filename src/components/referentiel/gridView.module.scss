@@ -1,0 +1,30 @@
+.visited {
+  button {
+    border: solid 2px red;
+  }
+}
+
+.visitedGood {
+  button {
+    border: solid 2px green;
+  }
+}
+
+table {
+  width: 13rem;
+  td {
+    padding: 2px;
+    button {
+      padding: 0;
+      width: 2rem;
+      height: 2rem;
+      background-color: white;
+      outline: red;
+      border: solid rgba(0, 0, 0, 0) 2px;
+      &:focus,
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+  }
+}

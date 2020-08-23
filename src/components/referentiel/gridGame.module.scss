@@ -1,0 +1,62 @@
+@keyframes fade-in {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.container {
+  display: flex;
+
+  .clientHeader {
+    height: 2rem;
+    padding: 0.5rem 0.1rem;
+    background-color: lightcyan;
+    margin: 0 0 0.5rem 0;
+    div {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 1rem;
+      background-color: white;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 0.5rem;
+      span {
+        vertical-align: sub;
+      }
+    }
+  }
+
+  .messages {
+    max-height: 15rem;
+    width: 100%;
+    overflow: auto;
+    .message {
+      animation-name: fade-in;
+      animation-delay: 0s;
+      animation-duration: 1s;
+      background-color: lightcyan;
+      padding: 12px;
+      border-radius: 4px 18px 18px 4px;
+      &:first-child {
+        border-radius: 18px 18px 18px 4px;
+      }
+      &:last-child {
+        border-radius: 4px 18px 18px 18px;
+      }
+
+      margin: 0 18px 2px 2px;
+
+      .origine {
+        color: red;
+      }
+      .coordinate {
+        color: green;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.strockColor {
+  stroke: black;
+}
+.fillColor {
+  fill: white;
+}
+
+.element {
+  transition: transform 0.1s linear;
+}
+
+.isNotReferentiel {
+  .firstArrow {
+    opacity: 0.4;
+    stroke: #0000fe;
+    stroke-width: 0.6;
+  }
+  .secondArrow {
+    opacity: 0.4;
+    stroke: #00f409;
+    stroke-width: 0.6;
+  }
+  circle {
+    fill: #ff0000;
+    opacity: 0.4;
+  }
+}
+
+.isReferentiel {
+  .firstArrow {
+    opacity: 1;
+    stroke: #0000fe;
+    stroke-width: 1;
+  }
+  .secondArrow {
+    opacity: 1;
+    stroke: #00f409;
+    stroke-width: 1;
+  }
+  circle {
+    fill: #ff0000;
+    opacity: 1;
+  }
+}
+
+.svgImage {
+  width: 45%;
+  min-width: 400px;
+}
