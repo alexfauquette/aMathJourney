@@ -1,5 +1,4 @@
-import { element } from "prop-types"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Slider from "@material-ui/core/Slider"
 import SystemPlot from "./SystemPlot"
 
