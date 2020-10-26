@@ -12,7 +12,7 @@ const computeTrajectory = (
   t0,
   t1
 ) => {
-  const dt = 0.1
+  const dt = 0.05
   const rep = []
 
   if (lambda1.y === 0) {
@@ -45,6 +45,13 @@ const computeTrajectory = (
             Math.exp(t * lambda2.x) * z0.y * s2.y,
         })
       }
+
+      if (
+        Math.abs(rep[rep.length - 1].x) > 10 ||
+        Math.abs(rep[rep.length - 1].x) > 10
+      ) {
+        return rep
+      }
     }
     return rep
   } else {
@@ -62,6 +69,13 @@ const computeTrajectory = (
           r0 *
           Math.exp(lambda1.x * t),
       })
+
+      if (
+        Math.abs(rep[rep.length - 1].x) > 10 ||
+        Math.abs(rep[rep.length - 1].x) > 10
+      ) {
+        return rep
+      }
     }
   }
   return rep
@@ -100,7 +114,7 @@ const computeLines = (lambda1, lambda2, s1, s2, isDiagonalizable) => {
   } else {
     let t0 = 0
     let t1 = 5
-    if (lambda1.x > 0 && lambda2.x > 0) {
+    if (lambda1.x >= 0 && lambda2.x >= 0) {
       t0 = -5
       t1 = 0
     }
@@ -164,12 +178,10 @@ const ELEMENT_SIZE = 500
 const VIEW_SIZE = 100
 const MAX_X = 10
 const SystemPlot = ({ lambda1, lambda2, s1, s2, isDiagonalizable }) => {
-  // s1 = s1 || { x: 1, y: 1 }
-  // s2 = s2 || { x: 4, y: 1 }
   const data = computeLines(lambda1, lambda2, s1, s2, isDiagonalizable)
 
   const [pointer, setPointer] = useState(null)
-  const [showBaseVectors, setShowBaseVectors] = useState(true)
+  const [showBaseVectors, setShowBaseVectors] = useState(false)
   const [path, setPath] = useState([])
 
   useEffect(() => {
@@ -232,7 +244,7 @@ const SystemPlot = ({ lambda1, lambda2, s1, s2, isDiagonalizable }) => {
             cx={(VIEW_SIZE / MAX_X) * pointer.x}
             cy={(VIEW_SIZE / MAX_X) * pointer.y}
             r={2}
-            style={{ fill: "red" }}
+            style={{ fill: "gray" }}
           />
         )}
         {path && (
@@ -243,7 +255,7 @@ const SystemPlot = ({ lambda1, lambda2, s1, s2, isDiagonalizable }) => {
                   `${(VIEW_SIZE / MAX_X) * x} ${(VIEW_SIZE / MAX_X) * y}`
               )
               .join(" L ")}`}
-            style={{ stroke: "red", fill: "none" }}
+            style={{ stroke: "gray", fill: "none" }}
           />
         )}
 
