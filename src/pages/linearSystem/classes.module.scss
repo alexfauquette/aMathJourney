@@ -1,0 +1,29 @@
+.paramameters {
+  display: flex;
+  justify-content: space-between;
+  & div {
+    width: 45%;
+  }
+}
+.active {
+  .draggable:hover {
+    cursor: grab;
+  }
+  .dragging {
+    cursor: grabbing;
+  }
+
+  .fadeElement {
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.disable {
+  opacity: 0.5;
+  & * {
+    pointer-events: none;
+  }
+}

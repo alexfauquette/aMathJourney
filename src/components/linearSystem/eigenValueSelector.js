@@ -1,26 +1,34 @@
 import React, { useState } from "react"
 import Slider from "@material-ui/core/Slider"
-import SystemPlot from "./SystemPlot"
+import Checkbox from "@material-ui/core/Checkbox"
+import useDimensions from "../../utils/getDimensions"
 
-const EigenValueSelector = () => {
-  const [lambda1, setLambda1] = useState({ x: 1, y: 1 })
-  const [lambda2, setLambda2] = useState({ x: -1, y: 1 })
+const EigenValueSelector = ({
+  lambda1,
+  setLambda1,
+  lambda2,
+  setLambda2,
+  isDiagonalizable,
+  setIsDiagonalizable,
+}) => {
   const [draggId, setDraggId] = useState(null)
+  const [ref, { width, height }] = useDimensions()
 
   return (
-    <>
+    <div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-50 -50 100 100"
-        style={{ width: "500px", height: "500px" }}
+        ref={ref}
+        // style={{ width: "500px", height: "500px" }}
         onMouseUp={() => setDraggId(null)}
         onMouseLeave={() => setDraggId(null)}
         onMouseMove={
           draggId === null
             ? null
             : (event) => {
-                let x = (5 * (event.nativeEvent.offsetX - 250)) / 250
-                let y = (5 * (event.nativeEvent.offsetY - 250)) / 250
+                let x = (10 * (event.nativeEvent.offsetX - width / 2)) / width
+                let y = (10 * (event.nativeEvent.offsetY - height / 2)) / height
                 x = x - (x % 0.1)
                 y = y - (y % 0.1)
 
@@ -60,6 +68,12 @@ const EigenValueSelector = () => {
           style={{ fill: "red" }}
         />
       </svg>
+
+      <Checkbox
+        value={isDiagonalizable}
+        onChange={(event) => setIsDiagonalizable(event.target.checked)}
+        disabled={lambda1.x !== lambda2.x || lambda1.y !== 0}
+      />
       <Slider
         value={lambda1.x}
         onChange={(_, newValue) => {
@@ -106,9 +120,7 @@ const EigenValueSelector = () => {
         name={"Im(L1)"}
         step={0.1}
       />
-
-      <SystemPlot lambda1={lambda1} lambda2={lambda2} />
-    </>
+    </div>
   )
 }
 
