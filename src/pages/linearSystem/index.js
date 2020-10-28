@@ -11,13 +11,20 @@ import BaseSelector from "src/components/linearSystem/baseSelector"
 
 import classes from "./classes.module.scss"
 
-const displayImaginary = ({ x, y }) =>
-  `${x.toFixed(1)}${
+const displayImaginary = ({ x, y }) => {
+  y = -y
+  return `${x.toFixed(1)}${
     y > 0 ? `+i${y.toFixed(1)}` : y < 0 ? `-i${Math.abs(y.toFixed(1))}` : ""
   }`
+}
 
-const displayS = ({ x: x1, y: y1 }, { x: x2, y: y2 }) =>
-  `[[${x1.toFixed(1)}, ${x2.toFixed(1)}],[${y1.toFixed(1)}, ${y2.toFixed(1)}]]`
+const displayS = ({ x: x1, y: y1 }, { x: x2, y: y2 }) => {
+  y1 = -y1
+  y2 = -y2
+  return `[[${x1.toFixed(1)}, ${x2.toFixed(1)}],[${y1.toFixed(1)}, ${y2.toFixed(
+    1
+  )}]]`
+}
 
 const displayA = (
   { x: l1Re, y: l1Im },
@@ -26,6 +33,11 @@ const displayA = (
   { x: s2x, y: s2y },
   isDiagonalizable
 ) => {
+  l1Im = -l1Im
+  l2Im = -l2Im
+  s1y = -s1y
+  s2y = -s2y
+
   const det = s1x * s2y - s1y * s2x
   let DS11Re = l1Re * s1x
   let DS12Re = l1Re * s2x

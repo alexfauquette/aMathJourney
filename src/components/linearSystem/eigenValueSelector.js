@@ -40,7 +40,7 @@ const EigenValueSelector = ({
                     setLambda2({ ...lambda2, x })
                   }
                 } else {
-                  // ware (or are going) to be in conjate complex case
+                  // we are (or are going) to be in conjugate complex case
                   if (draggId === 1) {
                     setLambda2({ x, y: -y })
                     setLambda1({ x, y })
