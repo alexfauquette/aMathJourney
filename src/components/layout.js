@@ -19,6 +19,7 @@ const Layout = ({
   children,
   location,
   currentLanguage = "English",
+  isFull = false,
   // showAbout = false,
 }) => (
   <div className={classes.root}>
@@ -27,7 +28,13 @@ const Layout = ({
       {...{ currentLanguage, location }}
     />
     <main className={classes.main}>
-      <article className={classes.article}>{children}</article>
+      <article
+        className={`${isFull ? classes.fullArticle : classes.smallArticle} ${
+          classes.article
+        }`}
+      >
+        {children}
+      </article>
       {/* {showAbout ? (
         <div className={classes.aboutContainer}>
           {currentLanguage === "Français" ? <AboutFr /> : <AboutEn />}

@@ -10,6 +10,7 @@ const EigenValueSelector = ({
   setLambda2,
   isDiagonalizable,
   setIsDiagonalizable,
+  classes,
 }) => {
   const [draggId, setDraggId] = useState(null)
   const [ref, { width, height }] = useDimensions()
@@ -20,7 +21,6 @@ const EigenValueSelector = ({
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-50 -50 100 100"
         ref={ref}
-        // style={{ width: "500px", height: "500px" }}
         onMouseUp={() => setDraggId(null)}
         onMouseLeave={() => setDraggId(null)}
         onMouseMove={
@@ -51,6 +51,7 @@ const EigenValueSelector = ({
                 }
               }
         }
+        className={draggId ? classes.dragging : ""}
       >
         <path d={`M -50 0 L 50 0`} style={{ stroke: "black" }} />
         <path d={`M 0 -50 L 0 50`} style={{ stroke: "black" }} />
@@ -68,13 +69,14 @@ const EigenValueSelector = ({
           style={{ fill: "red" }}
         />
       </svg>
-
+      <br></br>
       <Checkbox
-        value={isDiagonalizable}
+        checked={lambda1.x !== lambda2.x || lambda1.y !== 0 || isDiagonalizable}
         onChange={(event) => setIsDiagonalizable(event.target.checked)}
         disabled={lambda1.x !== lambda2.x || lambda1.y !== 0}
       />
-      <Slider
+      <label>is Diagonalizable</label>
+      {/* <Slider
         value={lambda1.x}
         onChange={(_, newValue) => {
           if (lambda1.y === 0) {
@@ -119,7 +121,7 @@ const EigenValueSelector = ({
         max={5}
         name={"Im(L1)"}
         step={0.1}
-      />
+      /> */}
     </div>
   )
 }

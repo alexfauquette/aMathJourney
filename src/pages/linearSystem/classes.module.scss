@@ -1,16 +1,31 @@
 .paramameters {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   & div {
-    width: 45%;
+    min-width: 30%;
+    text-align: center;
+    & svg {
+      max-width: 10rem;
+    }
+  }
+}
+
+.dragging {
+  cursor: grabbing;
+  & * {
+    pointer-events: none;
+  }
+}
+
+.removeInteractions {
+  & * {
+    pointer-events: none;
   }
 }
 .active {
   .draggable:hover {
     cursor: grab;
-  }
-  .dragging {
-    cursor: grabbing;
   }
 
   .fadeElement {

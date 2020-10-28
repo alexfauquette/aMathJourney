@@ -27,13 +27,18 @@ $break-point: 450px;
   }
 }
 
+.fullArticle {
+}
+.smallArticle {
+  max-width: $articleWidth;
+}
 .article {
   background-color: white;
   padding: $smallTopBottomPadding $smallLeftRightPadding;
   @media (min-width: $break-point) {
     padding: $topBottomPadding $leftRightPadding;
   }
-  max-width: $articleWidth;
+
   width: 100%;
   text-align: left;
 }
